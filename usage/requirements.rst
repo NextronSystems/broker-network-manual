@@ -98,13 +98,13 @@ Gatekeeper
      - Destination
    * - Statistics
  
-       pull CC [1]_ and CRL [2]_
+       pull CA [1]_ and CRL [2]_
      - 12000/tcp
      - Gatekeeper
      - Lobby
    * - Statistics
 
-       push CC [1]_ and CRL [2]_
+       push CA [1]_ and CRL [2]_
      - 12000/tcp
      - Gatekeeper
      - Broker
@@ -116,10 +116,10 @@ Gatekeeper
      - Broker
 
 .. note:: 
-    Your Gatekeeper is getting the current list of allowed and revoked certificates from the Lobby. Those certificates are in return sent to the all Brokers.
+    Your Gatekeeper is getting the CA and revoked certificates from the Lobby. Those certificates are in return sent to the all Brokers.
 
 .. [1]
-   Client Certificate
+   Root Certificate (CA)
 
 .. [2]
    Certificate Revocation List

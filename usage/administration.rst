@@ -17,7 +17,7 @@ You can install the three servers in any order, as we will configure them once t
    If you still can't see the ``Broker Network`` Tab in your ``Asset Management``, restart the ``asgard2`` service in ``Settings`` > ``System`` > ``Services``.
 
 Gatekeeper
-----------
+~~~~~~~~~~
 
 Once you installed your Gatekeeper via the ``nextronInstaller`` you can start to configure it.
 
@@ -69,7 +69,7 @@ To see if the Gatekeeper is running correctly, you can run the following command
              └─1827 /usr/bin/asgard2-gatekeeper
 
 Lobby
------
+~~~~~
 
 Once you installed your Lobby via the ``nextronInstaller`` you can start to configure it.
 
@@ -95,7 +95,7 @@ After you uploaded the configuration to your Lobby, you should now see that the 
     You might need to restart the Lobby after the initial setup.
 
 Broker
-------
+~~~~~~
 
 Once you installed your Lobby via the ``nextronInstaller`` you can start to configure it.
 
@@ -152,3 +152,290 @@ After the Broker Network has been set up, you need to create a new Agent Install
 .. figure:: ../images/setup_agent_installer2.png
    :target: ../_images/setup_agent_installer2.png
    :alt: New Agent Installer
+
+Update Agent's Broker Network
+-----------------------------
+
+If you need to update existing ASGARD Agents with your new configuration for the Broker Network, you can create a (Scheduled) Group Task.
+
+To do this, navigate to ``Response Control`` > ``(Scheduled) Group Task`` and add a new task. Chose ``Maintenance`` for the Task and ``Configure the asset's Broker Network`` for the Maintenance Type.
+
+The Broker Groups are optional, but you should choose accordingly if you created a different group in the earlier steps.
+
+.. figure:: ../images/group-task-update-broker-network.png
+   :target: ../_images/group-task-update-broker-network.png
+   :alt: Group Task to Update the Asset's Broker configuration
+
+Once the Agents received the task from your ASGARD, the configuration will be updated. The Agent will register itself to your Lobby and ask for a certificate. This certificate is used to allow communication with the Broker.
+
+Using the Lobby
+---------------
+
+The Lobby is the component in your Broker Network which needs a little more attention. The Lobby is distributing or revoking certificates for ASGARD Agents. The first thing your Agents, if configured to use your Broker Network, will do, is to contact your Lobby. They need a unique certificate to be able to communicate with your Brokers.
+
+During the initial setup of your Agent, a unique public and private key will be generated. The agent sends the public key to the Lobby, which in return (if the Asset is being accepted) sends the agent a signed TLS ClientAuth certificate.
+
+The Gatekeeper is pulling the current root CA certificate from the Lobby, as well as the CRL and sends it to all the Brokers. The Brokers need this public root CA to verify the authenticity of the certificate (similar to TLS in Web traffic).
+
+The agent will use the earlier issued certificate from the Lobby to communicate with the Broker. If the certificate is valid (i.e. it was signed by the root CA in the Lobby), it is allowed to continue further. If the certificate of the agent has been revoked (now in the CRL) or was not signed by the CA, it is denied.
+
+Asset Requests
+~~~~~~~~~~~~~~
+
+In your Lobby you can see the Asset Request of your Agents in ``Assets`` > ``Asset Requests``:
+
+.. figure:: ../images/lobby_asset_request.png
+   :target: ../_images/lobby_asset_request.png
+   :alt: Asset Request in the Lobby
+
+Here you have four options depending on what should happen to this agent:
+
+- Issue Certificate to allow connections from an asset
+- Revoke Certificate to deny connections from an asset 
+- Delete Asset from Database; the asset may re-register
+- Edit Asset
+
+You can set your Lobby to auto-accept new agents, see :ref:`usage/administration:Lobby Settings`.
+
+Approved Assets
+~~~~~~~~~~~~~~~
+
+In your Lobby you can see all the approved assets in ``Assets`` > ``Approved Assets``.
+
+.. figure:: ../images/lobby_approved_assets.png
+   :target: ../_images/lobby_approved_assets.png
+   :alt: Approved Assets in the Lobby
+
+Here you can see more information about the issued certificates or revoke some certificates to deny connection from the assets.
+
+Actions you can take:
+
+- Revoke Certificate to deny connections from an asset
+- Edit Asset
+
+Once a certificate is revoked, the Agent communication is denied. The certificate will be placed in the CRL, which in return gets distributed by the Gatekeeper to all the Brokers.
+
+.. figure:: ../images/lobby_revoke_certificate.png
+   :target: ../_images/lobby_revoke_certificate.png
+   :alt: Revoke Certificate in the Lobby
+
+Revoked Assets
+~~~~~~~~~~~~~~
+
+In your Lobby you can see all the revoked assets in ``Assets`` > ``Revoked Assets``.
+
+.. figure:: ../images/lobby_revoked_assets.png
+   :target: ../_images/lobby_revoked_assets.png
+   :alt: Revoke Certificate in the Lobby
+
+Actions you can take here:
+
+- Issue Certificate to allow connections from an asset
+- Edit Asset
+
+If you want to allow a revoked asset to communicate with the Brokers again, you can do this here. The certificate belonging to the asset will be removed from the CRL, which in return gets distributed by the Gatekeeper to all the Brokers.
+
+From this point on, the Agent can communicate with the ASGARD through the Broker again. Revoking and Allowing certificates will reflect to the Brokers rather quickly.
+
+Lobby Settings
+~~~~~~~~~~~~~~
+
+The Settings in your Lobby allow you to configure and tweak certain settings:
+
+- Users
+- Roles
+- Lobby
+- TLS
+- NTP
+- Syslog
+- System Upgrade
+
+Lobby Settings - Users
+^^^^^^^^^^^^^^^^^^^^^^
+
+In the Users setting of the Lobby you can create new users or assign roles to existing users.
+
+You can also enforce the usage of 2FA for certain users.
+
+Lobby Settings - Roles
+^^^^^^^^^^^^^^^^^^^^^^
+
+You can define different roles for your Lobby. The default roles are:
+
+- User Admin
+- Asset Manager
+- Admin
+
+An Additional Role of ``Read-Only`` can be created.
+
+.. figure:: ../images/lobby_role_read_only.png
+   :target: ../_images/lobby_role_read_only.png
+   :alt: Create a Read-Only Role in the Lobby
+
+Lobby Settings - Lobby
+^^^^^^^^^^^^^^^^^^^^^^
+
+In the Lobby Settings, you can see if Current Config is Available, which in return allows Agent Registration. This does not need to be changed, only during the initial setup you need to import the configuration.
+
+Additionally, you can enable the ``Automatic Approval of ASGARD Agents``
+
+.. figure:: ../images/lobby_settings_lobby.png
+   :target: ../_images/lobby_settings_lobby.png
+   :alt: The Lobby Settings
+
+Lobby Settings - TLS
+^^^^^^^^^^^^^^^^^^^^
+
+You can upload a TLS Certificate for the Web Interface of the Lobby.
+
+.. figure:: ../images/lobby_settings_tls.png
+   :target: ../_images/lobby_settings_tls.png
+   :alt: The TLS Settings
+
+Lobby Settings - NTP
+^^^^^^^^^^^^^^^^^^^^
+
+You can change the NTP Settings of the Lobby here. An indicator is shown with additional details regarding the NTP Status.
+
+.. figure:: ../images/lobby_settings_ntp.png
+   :target: ../_images/lobby_settings_ntp.png
+   :alt: The NTP Settings
+
+Lobby Settings - Syslog
+^^^^^^^^^^^^^^^^^^^^^^^
+
+You can configure Syslog Forwarding here, similar to the settings in your ASGARD, but only for your Lobby Logs.
+
+.. figure:: ../images/lobby_settings_syslog.png
+   :target: ../_images/lobby_settings_syslog.png
+   :alt: The Syslog Settings
+
+Lobby Settings - Upgrade
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+Here you can apply system upgrades for the lobby. Additional information regarding the system are shown as well. You can also see and download the upgrade log if necessary.
+
+.. figure:: ../images/lobby_settings_upgrade.png
+   :target: ../_images/lobby_settings_upgrade.png
+   :alt: The Syslog Settings
+
+Lobby Status
+~~~~~~~~~~~~
+
+The Lobby Status on the left hand side of the navigation menu gives a good indicator if there are any issues with the system.
+
+Lobby Status - OK
+^^^^^^^^^^^^^^^^^
+
+The green indicator means that everything is working as expected.
+
+.. figure:: ../images/lobby_status_navigation_ok.png
+   :target: ../_images/lobby_status_navigation_ok.png
+   :alt: Lobby Status - OK
+
+Lobby Status - Warning
+^^^^^^^^^^^^^^^^^^^^^^
+
+A yellow indicator means that one or more services are not running properly.
+
+.. figure:: ../images/lobby_status_navigation_warn.png
+   :target: ../_images/lobby_status_navigation_warn.png
+   :alt: Lobby Status - Warning
+
+Inspect the Diagnostics panel by clicking on the ``ASGARD Lobby Status`` button to get a better understanding of the issue.
+
+.. figure:: ../images/lobby_diagnostics_panel_warn.png
+   :target: ../_images/lobby_diagnostics_panel_warn.png
+   :alt: Lobby Diagnostics - Warning
+
+Here we can see that the Gatekeeper didn't contact the Lobby. You can see more details by clicking the magnifying glass to the right.
+
+.. figure:: ../images/lobby_diagnostics_details_panel_warn.png
+   :target: ../_images/lobby_diagnostics_details_panel_warn.png
+   :alt: Lobby Diagnostics - Warning
+
+Lobby Status - Error
+^^^^^^^^^^^^^^^^^^^^
+
+A red indicator means that one or more services are problematic and need to be fixed in a timely manner.
+
+.. figure:: ../images/lobby_status_navigation_error.png
+   :target: ../_images/lobby_status_navigation_error.png
+   :alt: Lobby Status - Error
+
+Inspect the Diagnostics panel by clicking on the ``ASGARD Lobby Status`` button to get a better understanding of the issue.
+
+.. figure:: ../images/lobby_diagnostics_panel_error.png
+   :target: ../_images/lobby_diagnostics_panel_error.png
+   :alt: Lobby Diagnostics - Error
+
+Here we can see that the Lobby can't reach the update server. You can see more details by clicking the magnifying glass to the right.
+
+.. figure:: ../images/lobby_diagnostics_details_panel_error.png
+   :target: ../_images/lobby_diagnostics_details_panel_error.png
+   :alt: Lobby Diagnostics - Error
+
+Broker Network in the ASGARD
+----------------------------
+
+The Broker Network view in your ASGARD gives you:
+
+- The number of Asset connections
+- Gatekeeper Statistics
+- Open, Approved and Revoked Asset Requests in your Lobby
+- Indicator of connection issues between your components
+
+.. figure:: ../images/broker_network_view.png
+   :target: ../_images/broker_network_view.png
+   :alt: Broker Network View
+
+Additionally, you can configure some settings of your Brokers, Gatekeeper and Lobby.
+
+Broker Maintenance
+~~~~~~~~~~~~~~~~~~
+
+In your Broker Network view, you can configure and inspect the status of your Brokers:
+
+- Restart Broker
+- Check for updates
+- Statistics regarding Open Connections
+- Broker Logs
+- Settings
+
+   - Configure syslog
+   - Configure NTP 
+
+.. figure:: ../images/broker_network_broker_details.png
+   :target: ../_images/broker_network_broker_details.png
+   :alt: Broker Network View - Broker Details
+
+Gatekeeper Maintenance
+~~~~~~~~~~~~~~~~~~~~~~
+
+In your Broker Network view, you can configure and inspect the status of your Gatekeeper:
+
+- Restart Broker
+- Check for updates
+- Statistics regarding Open Connections
+- Gatekeeper Log
+- Rejected Headers
+- Rejected Requests
+- Settings
+
+   - Configure syslog
+   - Configure NTP 
+
+.. figure:: ../images/broker_network_gatekeeper_details.png
+   :target: ../_images/broker_network_gatekeeper_details.png
+   :alt: Broker Network View - Gatekeeper Details
+
+Lobby Maintenance
+~~~~~~~~~~~~~~~~~
+
+In your Broker Network view, you can inspect the details of your Lobby:
+
+.. figure:: ../images/broker_network_lobby_details.png
+   :target: ../_images/broker_network_lobby_details.png
+   :alt: Broker Network View - Gatekeeper Details
+
+For configuration and Maintenance, use the Web Interface of the Lobby running on port ``9443``, see chapter :ref:`usage/administration:using the lobby`.
