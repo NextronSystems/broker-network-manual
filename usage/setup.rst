@@ -8,15 +8,18 @@ Overview of the Components
 There are three components which are needed for the Broker Network:
 
    * **Lobby** - New ASGARD Agents will get a certificate for a secure communication from the Lobby. An administrator can accept the agents or configure the auto-accept option. Certificates for agents can also be revoked here.
-   * **Gatekeeper** - The Gatekeeper is used to communicate directly between all the components. Certificates and Revoke Lists get picked up from the Lobby and are being pushed to all brokers.
-   * **Broker** - Your Broker(s) are the components which your agents/assets communicate with. Once an ASGARD Agent received a valid certificate from the Lobby, communication is possible.
+   * **Gatekeeper** - The Gatekeeper is used to communicate directly between all the components. Certificates and Revoke Lists get picked up from the Lobby and are being pushed to all Brokers.
+   * **Broker** - Your Broker is the components which your ASGARD Agents directly communicate with. Once an ASGARD Agent received a valid certificate from the Lobby, communication is possible. You can have multiple Broker configured
 
 .. figure:: ../images/broker_network_overview.png
    :target: ../_images/broker_network_overview.png
    :alt: The Broker Network
 
-Setup a New ESX VM and Mount the ISO
-------------------------------------
+Set up a New ESX VM and Mount the ISO
+-------------------------------------
+
+.. note::
+   This step has to be done three times, we need one dedicated server for each component. Please see <HERE LINK TO CHAPTER> for the hardware requirements.
 
 Create a new VM with your virtualization software. In this case, we will use VMWare ESX managed through a VMWare VCenter.
 
@@ -131,7 +134,7 @@ If you are using a proxy to access the internet, enter the proxy details in the 
 
 The base installation is now complete. In the next step we will install the Broker Network Components. For this step **Internet connectivity is required**.
 
-Use SSH to connect to the appliance using the user ``nextron`` and the password you specified during the installation.
+Use SSH to connect to the appliance using the user ``nextron`` and the password you specified during the installation. If SSH is not available, you can perform the next steps via the Console of your Virtualization Host, though SSH has more possibilities.
 
 Installing the Broker Network Components
 ----------------------------------------
@@ -139,9 +142,9 @@ Installing the Broker Network Components
 Installation of the Components
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-You need a minimum of three additional servers in your environment to build a Broker Network. Please see <HERE LINK TO CHAPTER> for the required hardware.
+After the base installation of your servers is completed, we can install the specific software for the components.
 
-The installation can be done as usual (see <HERE LINK TO CHAPTER>) with the provided ISO file. After the installation is done, you can choose the role you want to install:
+You can now choose the role you want to install (Broker, Gatekeeper or Lobby):
 
 .. figure:: ../images/broker_nextronInstaller.png
    :target: ../_images/broker_nextronInstaller.png
@@ -155,7 +158,11 @@ You can install the three servers in any order, as we will configure them once t
 Gatekeeper
 ^^^^^^^^^^
 
-To install the Gatekeeper, run the following command on a newly installed system: ``sudo nextronInstaller -gatekeeper``
+To install the Gatekeeper, run the following command on your newly installed system:
+
+.. code-block:: console
+    
+    nextron@gatekeeper:~$ sudo nextronInstaller -gatekeeper
 
 .. figure:: ../images/setup_gatekeeper1.png
    :target: ../_images/setup_gatekeeper1.png
@@ -167,14 +174,24 @@ After the installation is done, you will see the following message:
    :target: ../_images/setup_gatekeeper2.png
    :alt: Installing the Gatekeeper
 
-You can now check if the service was installed successfully. To do this, run ``systemctl status asgard2-gatekeeper.service``. You will see that the service is in a "failed/exited" state. This will change once we configured our ASGARD with the Gatekeeper.
+You can now check if the service was installed successfully. 
 
-To configure your Gatekeeper in the ASGARD Management Center, please see <HERE LINK TO CHAPTER>.
+.. code-block:: console
+   
+   nextron@gatekeeper:~$ systemctl status asgard2-gatekeeper.service
+   
+You will see that the service is in a "**failed/exited**" state. This will change once we configured our ASGARD with the Gatekeeper.
+
+To configure your Gatekeeper in the ASGARD Management Center, please see the :ref:`usage/administration:Gatekeeper` Chapter.
 
 Lobby
 ^^^^^
 
-To install the Lobby, run the following command on a newly installed system: ``sudo nextronInstaller -lobby``
+To install the Lobby, run the following command on your newly installed system:
+
+.. code-block:: console
+   
+   nextron@lobby:~$ sudo nextronInstaller -lobby
 
 .. figure:: ../images/setup_lobby1.png
    :target: ../_images/setup_lobby1.png
@@ -186,13 +203,17 @@ After the installation is finished, you will see the following message:
    :target: ../_images/setup_lobby2.png
    :alt: Installing the Lobby
 
-You can check the service to see if everything is up and running. To do this, run ``systemctl status asgard-lobby.service``.
+You can check the service to see if everything is up and running.
+
+.. code-block:: console
+   
+   nextron@lobby:~$ systemctl status asgard-lobby.service
 
 .. figure:: ../images/setup_lobby3.png
    :target: ../_images/setup_lobby3.png
    :alt: Installing the Lobby
 
-You can now navigate to the web interface of the lobby ``https://<FQDN>:9443``. Please log into the Lobby with the credentials of the user ``nextron``:
+You can now navigate to the web interface of the lobby :samp:`https://<FQDN>:9443`. Please log into the Lobby with the credentials of the user ``nextron``:
 
 .. figure:: ../images/setup_lobby4.png
    :target: ../_images/setup_lobby4.png
@@ -210,12 +231,22 @@ After changing the password, you will be logged out of the Lobby. Log back into 
    :target: ../_images/setup_lobby6.png
    :alt: Using the Lobby
 
-For configuration of the Lobby, please see <HERE LINK TO CHAPTER>.
+You can now log out of the Lobby and back in with the new admin user. You are now able to see on the left navigation menu ``Assets``. This will be used later on to accept new assets.
+
+.. figure:: ../images/setup_lobby7.png
+   :target: ../_images/setup_lobby7.png
+   :alt: Using the Lobby
+
+To configuration your Lobby in the ASGARD Management Center , please see the :ref:`usage/administration:Lobby` Chapter.
 
 Broker
 ^^^^^^
 
-To install a Broker, run the following command on a newly installed system: ``sudo nextronInstaller -broker``
+To install a Broker, run the following command on your newly installed system
+
+.. code-block:: console
+   
+   nextron@broker:~$ sudo nextronInstaller -broker
 
 .. figure:: ../images/setup_broker1.png
    :target: ../_images/setup_broker1.png
@@ -227,9 +258,15 @@ After the installation is finished, you will see the following message:
    :target: ../_images/setup_broker2.png
    :alt: Installing a Broker
 
-You can now check if the service was installed successfully. To do this, run ``systemctl status asgard-broker.service``. You will see that the service is in a "failed/exited" state. This will change once we configured our ASGARD with the Broker.
+You can now check if the service was installed successfully.
 
-To configure your Broker in the ASGARD Management Center, please see <HERE LINK TO CHAPTER>.
+.. code-block:: console
+   
+   nextron@broker:~$ systemctl status asgard-broker.service
+
+You will see that the service is in a "**failed/exited**" state. This will change once we configured our ASGARD with the Broker.
+
+To configure your Broker in the ASGARD Management Center, please see the :ref:`usage/administration:Broker` Chapter.
 
 Change IP Address
 -----------------
@@ -248,19 +285,8 @@ ASGARD's IP can be changed in **/etc/network/interfaces**. The IP is configured 
    netmask 255.255.255.0
    gateway 192.0.2.254
 
-Important: There might be a case where the name of the network adaptor (in this example: ``ens32``) can vary.
+.. note::
+   There might be a case where the name of the network interface (in this example: ``ens32``) is different.
+   To verify this you can run ``ip a`` and see the name of the network interface.
 
-The new IP can be applied with the command **sudo systemctl restart networking**
-
-Agent Installer
-^^^^^^^^^^^^^^^
-
-After the Broker Network has been set up, you need to create a new Agent Installer. To do this, navigate on your ASGARD to ``Downloads`` > ``Agent Installers``. From here you can choose ``Add Agent Installers`` and set the configuration to your liking. Most importantly here is the Option for ``Broker Groups``. Set this to the value which you gave your Lobby and your Broker(s). After you added the agent installer, make sure to install it on the agents.
-
-.. figure:: ../images/setup_agent_installer1.png
-   :target: ../_images/setup_agent_installer1.png
-   :alt: New Agent Installer
-
-.. figure:: ../images/setup_agent_installer2.png
-   :target: ../_images/setup_agent_installer2.png
-   :alt: New Agent Installer
+The new IP can be applied with the command ``sudo systemctl restart networking``.

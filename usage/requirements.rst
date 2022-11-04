@@ -5,11 +5,11 @@ Before You Begin
 Agent to ASGARD Communication
 -----------------------------
 
-There are a few things to consider before you start with the installation. The communication between the ASGARD agent and the Broker Network is unidirectional. The ASGARD agent polls ASGARD, or one of the Brokers if configured, in a given timeframe and ask for tasks to execute. There is no active triggering from ASGARD to the ASGARD agent – we have designed it that way, because we believe that opening a port on all connected endpoints should and can be avoided. 
+There are a few things to consider before you start with the installation of you Broker Network. The communication between the ASGARD agent and the Broker Network is unidirectional. The ASGARD agent polls ASGARD, or one of the Brokers if configured, in a given timeframe and ask for tasks to execute. There is no active triggering from ASGARD or the Broker(s) to the ASGARD agent – we have designed it that way, because we believe that opening a port on all connected endpoints should and can be avoided. 
 
-The Broker Network acts as a gateway between ASGARD Agents and the ASGARD itself. This allows for more flexibility within your ASGARD environment, such as remote agents or a dedicated Broker endpoint in a DMZ.
+The Broker Network acts as a gateway between ASGARD Agents and ASGARD itself. This allows for more flexibility within your ASGARD environment, such as remote agents or a dedicated Broker in your DMZ.
 
-If a ASGARD Agent is configured to work with your broker network, it can still connect directly to your ASGARD if the broker(s) can't be reached.
+If an ASGARD Agent is configured to work with your Broker Network, it can still connect directly to your ASGARD if the Broker can't be reached.
 
 Overview of the Components
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -17,8 +17,8 @@ Overview of the Components
 There are three components which are needed for the Broker Network:
 
    * **Lobby** - New ASGARD Agents will get a certificate for a secure communication from the Lobby. An administrator can accept the agents or configure the auto-accept option. Certificates for agents can also be revoked here.
-   * **Gatekeeper** - The Gatekeeper is used to communicate directly between all the components. Certificates and Revoke Lists get picked up from the Lobby and are being pushed to all brokers.
-   * **Broker** - Your Broker(s) are the components which your agents/assets communicate with. Once an ASGARD Agent received a valid certificate from the Lobby, communication is possible.
+   * **Gatekeeper** - The Gatekeeper is used to communicate directly between all the components. Certificates and Revoke Lists get picked up from the Lobby and are being pushed to all Brokers.
+   * **Broker** - Your Broker is the components which your ASGARD Agents directly communicate with. Once an ASGARD Agent received a valid certificate from the Lobby, communication is possible. You can have multiple Broker configured
 
 .. figure:: ../images/broker_network_overview.png
    :target: ../_images/broker_network_overview.png
@@ -59,7 +59,7 @@ ASGARDs hardware requirements depend on the number of connected endpoints and al
 Network Requirements
 --------------------
 
-The ASGARD components require the following open ports.
+The ASGARD components use the following ports.
 
 ASGARD Agent
 ^^^^^^^^^^^^
@@ -75,14 +75,15 @@ ASGARD Agent
    * - Agent / Server communication
      - 443/tcp
      - ASGARD Agent
-     - Broker
+     - Broker / ASGARD
    * - Retrieve certificate
      - 443/tcp
      - ASGARD Agent
      - Lobby
 
 .. note::
-    The Lobby does not need to be exposed on the open internet. You can deploy your Lobby in your internal network and let all the agents pick up a certificate once they are being installed.
+    The Lobby should not be exposed on the open internet. You can deploy your Lobby in your internal network and let all the agents pick up a certificate once they are being installed.
+    The communication between Agents and the Lobby is a happening once, so that the Agents can get their key material for the secure channel.
 
 Gatekeeper
 ^^^^^^^^^^
@@ -95,21 +96,33 @@ Gatekeeper
      - Port
      - Source
      - Destination
-   * - Statistics / CA / CRL
+   * - Statistics
+ 
+       pull CC [1]_ and CRL [2]_
      - 12000/tcp
      - Gatekeeper
      - Lobby
-   * - Statistics / push CA / push CRL
+   * - Statistics
+
+       push CC [1]_ and CRL [2]_
      - 12000/tcp
      - Gatekeeper
      - Broker
    * - Create secure tunnel per client
-     - 12001-1200x/tcp (x = CPU count of Broker)
+     - 12001-1200x/tcp
+ 
+       (x = CPU count of Broker)
      - Gatekeeper
      - Broker
 
 .. note:: 
-    Your Gatekeeper is getting the current list of allowed and revoked certificates from the Lobby. Those certificates are in return sent to the Broker(s).
+    Your Gatekeeper is getting the current list of allowed and revoked certificates from the Lobby. Those certificates are in return sent to the all Brokers.
+
+.. [1]
+   Client Certificate
+
+.. [2]
+   Certificate Revocation List
 
 ASGARD
 ^^^^^^
@@ -177,17 +190,18 @@ The Broker Network components are configured to retrieve updates from the follow
    * - NTP
      - 123/udp
      - Gatekeeper, Lobby, Broker
-     - 0.debian.pool.ntp.org
+     - 0.debian.pool.ntp.org [3]_
    * - NTP
      - 123/udp
      - Gatekeeper, Lobby, Broker
-     - 1.debian.pool.ntp.org
+     - 1.debian.pool.ntp.org [3]_
    * - NTP
      - 123/udp
      - Gatekeeper, Lobby, Broker
-     - 2.debian.pool.ntp.org
+     - 2.debian.pool.ntp.org [3]_
 
-The NTP server configuration can be changed.
+.. [3]
+  The NTP server configuration can be changed.
 
 All proxy systems should be configured to allow access to these URLs without TLS/SSL interception. (ASGARD uses client-side SSL certificates for authentication). It is possible to configure a proxy server, username and password during the setup process of the ASGARD platform. Only BASIC authentication is supported (no NTLM authentication support).
 
@@ -196,7 +210,7 @@ DNS
 
 All the components need to have a resolvable FQDN.
 
-Brokers facing the open internet need to be resolvable with a FQDN, so make sure to confige the necessary A-Records before setting up an external facing Broker.
+Brokers facing the open internet need to be resolvable with a FQDN, so make sure to configer the necessary A-Records before setting up an external facing Broker.
 
 
 Verify the Downloaded ISO (Optional)
