@@ -43,18 +43,56 @@ Hardware Requirements
 
 ASGARDs hardware requirements depend on the number of connected endpoints and also on the intended use. For example, you should consider using bigger hard disks if you are planning to use Bifrost or ASGARD's evidence collection feature extensively.
 
+.. note:: 
+  THOR and AURORA count as individual endpoints in this calculation. AURORA is more demanding than THOR. This results in a maximum of 200/4000/10000 endpoints if THOR and AURORA are installed on each endpoint.
+
+ASGARD Broker Hardware
+^^^^^^^^^^^^^^^^^^^^^^
+
 .. list-table::
    :header-rows: 1
    :widths: 30, 70
 
    * - Connected Endpoints
      - Minimum  Hardware Requirements
-   * - FILL
-     - FILL
-   * - FILL
-     - FILL
-   * - FILL
-     - FILL
+   * - up to 500
+     - System memory: x GB, Hard Disk: y GB, CPU Cores: z
+   * - up to 10,000
+     - System memory: x GB, Hard Disk: y GB, CPU Cores: z
+   * - up to 25,000
+     - System memory: 16 GB, Hard Disk: 1 TB, CPU Cores: 8
+
+ASGARD Gatekeeper Hardware
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+   :widths: 30, 70
+
+   * - Connected Endpoints
+     - Minimum  Hardware Requirements
+   * - up to 500
+     - System memory: x GB, Hard Disk: y GB, CPU Cores: z
+   * - up to 10,000
+     - System memory: x GB, Hard Disk: y GB, CPU Cores: z
+   * - up to 25,000
+     - System memory: 16 GB, Hard Disk: 1 TB, CPU Cores: 8
+
+ASGARD Lobby Hardware
+^^^^^^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+   :widths: 30, 70
+
+   * - Connected Endpoints
+     - Minimum  Hardware Requirements
+   * - up to 500
+     - System memory: x GB, Hard Disk: y GB, CPU Cores: z
+   * - up to 10,000
+     - System memory: x GB, Hard Disk: y GB, CPU Cores: z
+   * - up to 25,000
+     - System memory: 16 GB, Hard Disk: 1 TB, CPU Cores: 8
 
 Network Requirements
 --------------------
