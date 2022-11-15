@@ -15,12 +15,8 @@ Welcome to ASGARD's Broker Network documentation!
    usage/requirements
    usage/setup
    usage/administration
-   usage/commandline
-   usage/maintenance
    usage/known-issues
    usage/troubleshooting
-   usage/faq
-   usage/appendix
 
 
 Indices and tables

@@ -1,4 +1,0 @@
-Advanced Configuration
-======================
-
-text

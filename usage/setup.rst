@@ -1,6 +1,6 @@
 
-Quick Setup Guide
-=================
+Setup Guide
+===========
 
 Overview of the Components
 --------------------------
@@ -19,7 +19,7 @@ Set up a New ESX VM and Mount the ISO
 -------------------------------------
 
 .. note::
-   This step has to be done three times, we need one dedicated server for each component. Please see <HERE LINK TO CHAPTER> for the hardware requirements.
+   This step has to be done three times, we need one dedicated server for each component. Please see :ref:`usage/requirements:hardware requirements` for the hardware requirements.
 
 Create a new VM with your virtualization software. In this case, we will use VMWare ESX managed through a VMWare VCenter.
 
