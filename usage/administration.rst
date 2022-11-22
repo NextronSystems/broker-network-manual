@@ -21,7 +21,7 @@ Gatekeeper
 
 Once you installed your Gatekeeper via the ``nextronInstaller`` you can start to configure it.
 
-To do this, we have to connect to our ASGARD Management Center. Navigate to ``Asset Management`` > ``Broker Network``.
+To do this, we have to connect the Gatekeeper to our ASGARD Management Center. Navigate to ``Asset Management`` > ``Broker Network`` in your ASGARD Management Center.
 
 From here you can click the edit button on the Gatekeeper:
 
@@ -51,8 +51,6 @@ Once you are done, you can check the status and other settings of the Gatekeeper
    :target: ../_images/setup_gatekeeper7.png
    :alt: Setting up the Gatekeeper
 
-You might need to restart the Gatekeeper after the initial setup.
-
 To see if the Gatekeeper is running correctly, you can run the following command:
 
 .. code-block:: console
@@ -68,12 +66,16 @@ To see if the Gatekeeper is running correctly, you can run the following command
              ├─1826 /bin/bash /etc/asgard2-gatekeeper/run_asgard2_gatekeeper.sh
              └─1827 /usr/bin/asgard2-gatekeeper
 
+.. note::
+   You might need to restart the Gatekeeper after the initial setup. To do this, run ``sudo systemctl restart asgard2-gatekeeper.service`` on the CLI of your Gatekeeper.
+
 Lobby
 ~~~~~
 
 Once you installed your Lobby via the ``nextronInstaller`` you can start to configure it.
 
-To do this, we have to connect to our ASGARD Management Center. Navigate to ``Asset Management`` > ``Broker Network``. You can now add a new Lobby on the top right corner. Please fill in the FQDN again and click ``Submit``. You can assign a ``Group`` to group the Lobby and one or multiple Broker into one group. If you are planning to only use one Lobby you can leave the value as ``default``. A pop-up will appear with configuration instructions. Download the configuration file, we will use this now in our Lobby.
+To do this, we have to connect the Lobby to our ASGARD Management Center. Navigate to ``Asset Management`` > ``Broker Network`` in your ASGARD Management Center.
+You can now add a new Lobby on the top right corner. Please fill in the FQDN again and click ``Submit``. You can assign a ``Group`` to group the Lobby and one or multiple Broker into one group. If you are planning to only use one Lobby you can leave the value as ``default``. A pop-up will appear with configuration instructions. Download the configuration file, we will use this now in our Lobby.
 
 .. figure:: ../images/setup_lobby8.png
    :target: ../_images/setup_lobby8.png
@@ -92,14 +94,14 @@ After you uploaded the configuration to your Lobby, you should now see that the 
    :alt: Using the Lobby
 
 .. note:: 
-    You might need to restart the Lobby after the initial setup.
+    You might need to restart the Lobby after the initial setup. To do this, run ``sudo systemctl restart asgard-lobby.service`` on the CLI of your Lobby.
 
 Broker
 ~~~~~~
 
-Once you installed your Lobby via the ``nextronInstaller`` you can start to configure it.
+Once you installed your Broker via the ``nextronInstaller`` you can start to configure it.
 
-To do this, we have to connect to our ASGARD Management Center. Navigate to ``Asset Management`` > ``Broker Network``.
+To do this, we have to connect the Broker to our ASGARD Management Center. Navigate to ``Asset Management`` > ``Broker Network`` in your ASGARD Management Center.
 
 On the top right corner, click ``Add Broker``. Please fill in the FQDN for the Gatekeeper. Additionally, if the Broker should be reached via the open internet, you can assign a FQDN for the agents as well (make sure to set the A-Record in your public domain). You can leave the ``Group`` as default, but should change it accordingly if you set a different group earlier for your Lobby.
 
