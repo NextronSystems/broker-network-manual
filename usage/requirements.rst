@@ -24,75 +24,120 @@ There are three components which are needed for the Broker Network:
    :target: ../_images/broker_network_overview.png
    :alt: The Broker Network
 
-Performance Considerations
---------------------------
-
-In environments with up to 500 endpoints, the default polling interval is 20 seconds. In larger environments the polling interval increases automatically up to one minute for 2.000 endpoints and 10 minutes for a configuration with 25.000 endpoints connected to a single ASGARD. 
-
-Obviously, large environments are not as responsive as small environments when it comes to opening remote shells or executing urgent response tasks. It may take up to 10 minutes for the shell to open or the result to show up. However, once open, the shell or the response tasks are very responsive – almost as if it is native on the system.
-
-In order to adapt to specific requirements regarding responsiveness, the polling behavior can be modified. For details, refer to <HERE LINK TO CHAPTER>. The hardware requirements in the next chapter assume that the default polling interval is used. 
-
 Using a Proxy between ASGARD Agent and ASGARD
 ---------------------------------------------
 
-ASGARD supports using a standard http proxy for the entire Agent to ASGARD communication. In order to use a proxy, the ASGARD agent must be repacked after installation. For details, see <HERE LINK TO CHAPTER>.
+ASGARD supports using a standard http proxy for the entire Agent to ASGARD communication. In order to use a proxy, the ASGARD agent must be repacked after installation. For details, see :ref:`usage/administration:agent installer`.
 
 Hardware Requirements
 ---------------------
 
-ASGARDs hardware requirements depend on the number of connected endpoints and also on the intended use. For example, you should consider using bigger hard disks if you are planning to use Bifrost or ASGARD's evidence collection feature extensively.
-
-.. note:: 
-  THOR and AURORA count as individual endpoints in this calculation. AURORA is more demanding than THOR. This results in a maximum of 200/4000/10000 endpoints if THOR and AURORA are installed on each endpoint.
+You can find the hardware requirements for all of the components below.
 
 ASGARD Broker Hardware
 ^^^^^^^^^^^^^^^^^^^^^^
 
+The required hardware for your Broker depends on the setup you are choosing.
+
+If you want to use only one Broker, you can use the hardware requirements from the table below.
+If you want to use multiple Brokers, you can split the hardware requirements evenly among your Brokers.
+
 .. list-table::
    :header-rows: 1
-   :widths: 30, 70
+   :widths: 35, 65
 
    * - Connected Endpoints
-     - Minimum  Hardware Requirements
+     - Combined Hardware Requirements
    * - up to 500
-     - System memory: x GB, Hard Disk: y GB, CPU Cores: z
+     - CPU Cores: 1
+      
+       System memory: 4 GB
+       
+       Hard Disk: 80 GB
    * - up to 10,000
-     - System memory: x GB, Hard Disk: y GB, CPU Cores: z
+     - CPU Cores: 4
+      
+       System memory: 6 GB
+      
+       Hard Disk: 200 GB
    * - up to 25,000
-     - System memory: 16 GB, Hard Disk: 1 TB, CPU Cores: 8
+     - CPU Cores: 10
+
+       System memory: 16 GB
+      
+       Hard Disk: 500 GB
+
+Your Broker uses roughly 1 CPU Core for 2,500 agents. Generally we do recommend to use
+the approach with multiple smaller Brokers instead of one big Broker.
+
+Example: For an environment of up to 10,000 agents, you can use the following hardware (per Broker):
+
+  * 1 Broker
+    
+    - CPU Cores: 4
+    - System Memory: 6 GB
+    - Hard Disk: 200 GB
+  * 2 Brokers
+    
+    - CPU Cores: 2
+    - System Memory: 3 GB
+    - Hard Disk: 100 GB
+  * 4 Brokers
+    
+    - CPU Cores: 1
+    - System Memory: 3 GB
+    - Hard Disk: 80 GB
+
+.. note:: 
+  Try not to go lower than 80 GB of storage and 3 GB of system memory for your Broker, as this might influence system stability after a while.
 
 ASGARD Gatekeeper Hardware
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+The ASGARD Gatekeeper uses roughly the same amount of resources as your `ASGARD Management Center <https://asgard-manual.nextron-systems.com/en/latest/usage/requirements.html#hardware-requirements>`_.
+Please orientate yourself on the configuration of your ASGARD. The recommendations are the following:
+
 .. list-table::
    :header-rows: 1
    :widths: 30, 70
 
    * - Connected Endpoints
      - Minimum  Hardware Requirements
-   * - up to 500
-     - System memory: x GB, Hard Disk: y GB, CPU Cores: z
-   * - up to 10,000
-     - System memory: x GB, Hard Disk: y GB, CPU Cores: z
-   * - up to 25,000
-     - System memory: 16 GB, Hard Disk: 1 TB, CPU Cores: 8
+   * - up to 500 [1]_
+     - System memory: 4 GB
+       
+       Hard disk: 500 GB
+       
+       CPU Cores: 2
+   * - up to 10,000 [1]_
+     - System memory: 8 GB
+      
+       Hard disk: 1TB
+       
+       CPU Cores: 4
+   * - up to 25,000 [1]_
+     - System memory: 16 GB
+      
+       Hard disk: 1TB SSD (min 100 MB/s)
+       
+       CPU Cores: 4
+
+.. [1] THOR and AURORA count as individual endpoints in this calculation. AURORA is more demanding than THOR. This results in a maximum of 200/4000/10000 endpoints if THOR **and** AURORA are installed on each endpoint.
 
 ASGARD Lobby Hardware
 ^^^^^^^^^^^^^^^^^^^^^
 
 .. list-table::
    :header-rows: 1
-   :widths: 30, 70
 
-   * - Connected Endpoints
-     - Minimum  Hardware Requirements
-   * - up to 500
-     - System memory: x GB, Hard Disk: y GB, CPU Cores: z
-   * - up to 10,000
-     - System memory: x GB, Hard Disk: y GB, CPU Cores: z
-   * - up to 25,000
-     - System memory: 16 GB, Hard Disk: 1 TB, CPU Cores: 8
+   * - Hardware
+     - Amount
+   * - CPU Cores
+     - 2
+   * - System Memory
+     - 4 GB
+   * - Disk
+     - 80 GB
 
 Network Requirements
 --------------------
@@ -121,7 +166,7 @@ ASGARD Agent
 
 .. note::
     The Lobby should not be exposed on the open internet. You can deploy your Lobby in your internal network and let all the agents pick up a certificate once they are being installed.
-    The communication between Agents and the Lobby is a happening once, so that the Agents can get their key material for the secure channel.
+    The communication between Agents and the Lobby is happening once during the initial communication, so that the Agents can get their key material for the secure channel.
 
 Gatekeeper
 ^^^^^^^^^^
@@ -136,13 +181,13 @@ Gatekeeper
      - Destination
    * - Statistics
  
-       pull CA [1]_ and CRL [2]_
+       pull CA [2]_ and CRL [3]_
      - 12000/tcp
      - Gatekeeper
      - Lobby
    * - Statistics
 
-       push CA [1]_ and CRL [2]_
+       push CA [2]_ and CRL [3]_
      - 12000/tcp
      - Gatekeeper
      - Broker
@@ -156,10 +201,10 @@ Gatekeeper
 .. note:: 
     Your Gatekeeper is getting the CA and revoked certificates from the Lobby. Those certificates are in return sent to the all Brokers.
 
-.. [1]
-   Root Certificate (CA)
-
 .. [2]
+   Root CA Certificate (CA)
+
+.. [3]
    Certificate Revocation List
 
 ASGARD
@@ -228,17 +273,17 @@ The Broker Network components are configured to retrieve updates from the follow
    * - NTP
      - 123/udp
      - Gatekeeper, Lobby, Broker
-     - 0.debian.pool.ntp.org [3]_
+     - 0.debian.pool.ntp.org [4]_
    * - NTP
      - 123/udp
      - Gatekeeper, Lobby, Broker
-     - 1.debian.pool.ntp.org [3]_
+     - 1.debian.pool.ntp.org [4]_
    * - NTP
      - 123/udp
      - Gatekeeper, Lobby, Broker
-     - 2.debian.pool.ntp.org [3]_
+     - 2.debian.pool.ntp.org [4]_
 
-.. [3]
+.. [4]
   The NTP server configuration can be changed.
 
 All proxy systems should be configured to allow access to these URLs without TLS/SSL interception. (ASGARD uses client-side SSL certificates for authentication). It is possible to configure a proxy server, username and password during the setup process of the ASGARD platform. Only BASIC authentication is supported (no NTLM authentication support).
