@@ -94,7 +94,7 @@ Example: For an environment of up to 10,000 agents, you can use the following ha
 ASGARD Gatekeeper Hardware
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The ASGARD Gatekeeper uses roughly the same amount of resources as your `ASGARD Management Center <https://asgard-manual.nextron-systems.com/en/latest/usage/requirements.html#hardware-requirements>`_.
+The ASGARD Gatekeeper uses roughly the same amount of resources as your `ASGARD Management Center <https://asgard-manual.nextron-systems.com/en/latest/usage/requirements.html#hardware-requirements>`_, apart from the disk space.
 Please orientate yourself on the configuration of your ASGARD. The recommendations are the following:
 
 .. list-table::
@@ -106,19 +106,19 @@ Please orientate yourself on the configuration of your ASGARD. The recommendatio
    * - up to 500 [1]_
      - System memory: 4 GB
        
-       Hard disk: 500 GB
+       Hard disk: 200 GB
        
        CPU Cores: 2
    * - up to 10,000 [1]_
      - System memory: 8 GB
       
-       Hard disk: 1TB
+       Hard disk: 250 GB
        
        CPU Cores: 4
    * - up to 25,000 [1]_
      - System memory: 16 GB
       
-       Hard disk: 1TB SSD (min 100 MB/s)
+       Hard disk: 300 GB
        
        CPU Cores: 4
 
