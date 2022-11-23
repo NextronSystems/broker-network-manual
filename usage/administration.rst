@@ -1,10 +1,11 @@
 Administration
 ==============
 
-Installation of the Components
-------------------------------
+Configuration of the Components
+-------------------------------
 
-The installation can be done as usual after the base image was installed via the ISO. After the installation is done, you can choose the role you want to install:
+The installation can be done as usual after the base image was installed via the ISO file.
+After the installation is done, you can choose the role you want to install:
 
 .. figure:: ../images/broker_nextronInstaller.png
    :target: ../_images/broker_nextronInstaller.png
@@ -13,15 +14,18 @@ The installation can be done as usual after the base image was installed via the
 You can install the three servers in any order, as we will configure them once they are all up and running.
 
 .. warning::
-   The Broker Network needs a minimum version of 2.14.0 of the ASGARD Management Center. Please make sure you installed your Broker Network license in your ASGARD.
-   If you still can't see the ``Broker Network`` Tab in your ``Asset Management``, restart the ``asgard2`` service in ``Settings`` > ``System`` > ``Services``.
+   The Broker Network needs a minimum version of 2.14.0 of the ASGARD Management Center.
+   Please make sure you installed your Broker Network license in your ASGARD.
+   If you still can't see the ``Broker Network`` Tab in your ``Asset Management``,
+   restart the ``asgard2`` service in ``Settings`` > ``System`` > ``Services``.
 
-Gatekeeper
-~~~~~~~~~~
+Gatekeeper Configuration
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 Once you installed your Gatekeeper via the ``nextronInstaller`` you can start to configure it.
 
-To do this, we have to connect the Gatekeeper to our ASGARD Management Center. Navigate to ``Asset Management`` > ``Broker Network`` in your ASGARD Management Center.
+To do this, we have to connect the Gatekeeper to our ASGARD Management Center.
+Navigate to ``Asset Management`` > ``Broker Network`` in your ASGARD Management Center.
 
 From here you can click the edit button on the Gatekeeper:
 
@@ -35,7 +39,9 @@ Once you clicked on the Edit Button, a pop-up will appear. Please set the FQDN o
    :target: ../_images/setup_gatekeeper4.png
    :alt: Setting up the Gatekeeper
 
-After you confirmed your Gatekeeper FQDN, you will get another pop-up with a command (``sudo asgard2-gatekeeper-install '<TOKEN>'``). Please copy this command and execute it on the gatekeeper via SSH:
+After you confirmed your Gatekeeper FQDN, you will get another pop-up with a
+command (``sudo asgard2-gatekeeper-install '<TOKEN>'``). Please copy this
+command and execute it on the gatekeeper via SSH:
 
 .. figure:: ../images/setup_gatekeeper5.png
    :target: ../_images/setup_gatekeeper5.png
@@ -45,7 +51,8 @@ After you confirmed your Gatekeeper FQDN, you will get another pop-up with a com
    :target: ../_images/setup_gatekeeper6.png
    :alt: Setting up the Gatekeeper
 
-Once you are done, you can check the status and other settings of the Gatekeeper in your your ASGARD (magnifying glass icon):
+Once you are done, you can check the status and other settings of the Gatekeeper
+in your your ASGARD (magnifying glass icon):
 
 .. figure:: ../images/setup_gatekeeper7.png
    :target: ../_images/setup_gatekeeper7.png
@@ -67,49 +74,65 @@ To see if the Gatekeeper is running correctly, you can run the following command
              └─1827 /usr/bin/asgard2-gatekeeper
 
 .. note::
-   You might need to restart the Gatekeeper after the initial setup. To do this, run ``sudo systemctl restart asgard2-gatekeeper.service`` on the CLI of your Gatekeeper.
+   You might need to restart the Gatekeeper after the initial setup. To do this,
+   run ``sudo systemctl restart asgard2-gatekeeper.service`` on the CLI of your Gatekeeper.
 
-Lobby
-~~~~~
+Lobby Configuration
+~~~~~~~~~~~~~~~~~~~
 
 Once you installed your Lobby via the ``nextronInstaller`` you can start to configure it.
 
-To do this, we have to connect the Lobby to our ASGARD Management Center. Navigate to ``Asset Management`` > ``Broker Network`` in your ASGARD Management Center.
-You can now add a new Lobby on the top right corner. Please fill in the FQDN again and click ``Submit``. You can assign a ``Group`` to group the Lobby and one or multiple Broker into one group. If you are planning to only use one Lobby you can leave the value as ``default``. A pop-up will appear with configuration instructions. Download the configuration file, we will use this now in our Lobby.
+To do this, we have to connect the Lobby to our ASGARD Management Center.
+Navigate to ``Asset Management`` > ``Broker Network`` in your ASGARD Management Center.
+You can now add a new Lobby on the top right corner. Please fill in the
+FQDN again and click ``Submit``. You can assign a ``Group`` to group the
+Lobby and one or multiple Broker into one group. If you are planning to only
+use one Lobby you can leave the value as ``default``. A pop-up will appear with
+configuration instructions. Download the configuration file, we will use this now in our Lobby.
+
+.. figure:: ../images/setup_lobby6.png
+   :target: ../_images/setup_lobby6.png
+   :alt: Using the Lobby
+
+In your Lobby, navigate to ``System Settings`` > ``Lobby``. Here you can
+upload the configuration file we downloaded in the last step:
+
+.. figure:: ../images/setup_lobby7.png
+   :target: ../_images/setup_lobby7.png
+   :alt: Using the Lobby
+
+After you uploaded the configuration to your Lobby, you should now see that
+the Lobby is connected with your ASGARD Management Center:
 
 .. figure:: ../images/setup_lobby8.png
    :target: ../_images/setup_lobby8.png
    :alt: Using the Lobby
 
-In your Lobby, navigate to ``System Settings`` > ``Lobby``. Here you can upload the configuration file we downloaded in the last step:
-
-.. figure:: ../images/setup_lobby9.png
-   :target: ../_images/setup_lobby9.png
-   :alt: Using the Lobby
-
-After you uploaded the configuration to your Lobby, you should now see that the Lobby is connected with your ASGARD Management Center:
-
-.. figure:: ../images/setup_lobby10.png
-   :target: ../_images/setup_lobby10.png
-   :alt: Using the Lobby
-
 .. note:: 
-    You might need to restart the Lobby after the initial setup. To do this, run ``sudo systemctl restart asgard-lobby.service`` on the CLI of your Lobby.
+    You might need to restart the Lobby after the initial setup. To do this,
+    run ``sudo systemctl restart asgard-lobby.service`` on the CLI of your Lobby.
 
-Broker
-~~~~~~
+Broker Configuration
+~~~~~~~~~~~~~~~~~~~~
 
 Once you installed your Broker via the ``nextronInstaller`` you can start to configure it.
 
-To do this, we have to connect the Broker to our ASGARD Management Center. Navigate to ``Asset Management`` > ``Broker Network`` in your ASGARD Management Center.
+To do this, we have to connect the Broker to our ASGARD Management Center.
+Navigate to ``Asset Management`` > ``Broker Network`` in your ASGARD Management Center.
 
-On the top right corner, click ``Add Broker``. Please fill in the FQDN for the Gatekeeper. Additionally, if the Broker should be reached via the open internet, you can assign a FQDN for the agents as well (make sure to set the A-Record in your public domain). You can leave the ``Group`` as default, but should change it accordingly if you set a different group earlier for your Lobby.
+On the top right corner, click ``Add Broker``. Please fill in the FQDN
+for the Gatekeeper. Additionally, if the Broker should be reached via
+the open internet, you can assign a FQDN for the agents as well (make
+sure to set the A-Record in your public domain). You can leave the ``Group``
+as default, but should change it accordingly if you set a different group earlier for your Lobby.
 
 .. figure:: ../images/setup_broker3.png
    :target: ../_images/setup_broker3.png
    :alt: Installing the Broker
 
-After you confirmed your Broker FQDN, you will get another pop-up with a command (``sudo asgard2-gatekeeper-install '<TOKEN>'``). Please copy this command and execute it on the broker via SSH:
+After you confirmed your Broker FQDN, you will get another pop-up with a command
+(``sudo asgard2-gatekeeper-install '<TOKEN>'``). Please copy this command and
+execute it on the broker via SSH:
 
 .. figure:: ../images/setup_broker4.png
    :target: ../_images/setup_broker4.png
@@ -145,7 +168,11 @@ To see if the Gatekeeper is running correctly, you can run the following command
 Agent Installer
 ---------------
 
-After the Broker Network has been set up, you need to create a new Agent Installer. To do this, navigate on your ASGARD to ``Downloads`` > ``Agent Installers``. From here you can choose ``Add Agent Installers`` and set the configuration to your liking. Most importantly here is the Option for ``Broker Groups``. Set this to the value which you gave your Lobby and your Broker(s). After you added the agent installer, make sure to install it on the agents.
+After the Broker Network has been set up, you need to create a new Agent Installer.
+To do this, navigate on your ASGARD to ``Downloads`` > ``Agent Installers``. From
+here you can choose ``Add Agent Installers`` and set the configuration to your liking.
+Most importantly here is the Option for ``Broker Groups``. Set this to the value which you
+gave your Lobby and your Broker(s). After you added the agent installer, make sure to install it on the agents.
 
 .. figure:: ../images/setup_agent_installer1.png
    :target: ../_images/setup_agent_installer1.png
@@ -158,9 +185,11 @@ After the Broker Network has been set up, you need to create a new Agent Install
 Update Agent's Broker Network
 -----------------------------
 
-If you need to update existing ASGARD Agents with your new configuration for the Broker Network, you can create a (Scheduled) Group Task.
+If you need to update existing ASGARD Agents with your new configuration for the
+Broker Network, you can create a (Scheduled) Group Task.
 
-To do this, navigate to ``Response Control`` > ``(Scheduled) Group Task`` and add a new task. Chose ``Maintenance`` for the Task and ``Configure the asset's Broker Network`` for the Maintenance Type.
+To do this, navigate to ``Response Control`` > ``(Scheduled) Group Task`` and
+add a new task. Chose ``Maintenance`` for the Task and ``Configure the asset's Broker Network`` for the Maintenance Type.
 
 The Broker Groups are optional, but you should choose accordingly if you created a different group in the earlier steps.
 
@@ -168,18 +197,30 @@ The Broker Groups are optional, but you should choose accordingly if you created
    :target: ../_images/group-task-update-broker-network.png
    :alt: Group Task to Update the Asset's Broker configuration
 
-Once the Agents received the task from your ASGARD, the configuration will be updated. The Agent will register itself to your Lobby and ask for a certificate. This certificate is used to allow communication with the Broker.
+Once the Agents received the task from your ASGARD, the configuration will be updated.
+The Agent will register itself to your Lobby and ask for a certificate. This certificate
+is used to allow communication with the Broker.
 
 Using the Lobby
 ---------------
 
-The Lobby is the component in your Broker Network which needs a little more attention. The Lobby is distributing or revoking certificates for ASGARD Agents. The first thing your Agents, if configured to use your Broker Network, will do, is to contact your Lobby. They need a unique certificate to be able to communicate with your Brokers.
+The Lobby is the component in your Broker Network which needs a little more attention.
+The Lobby is distributing or revoking certificates for ASGARD Agents.
+The first thing your Agents, if configured to use your Broker Network, will do,
+is to contact your Lobby. They need a unique certificate to be able to communicate with your Brokers.
 
-During the initial setup of your Agent, a unique public and private key will be generated. The agent sends the public key to the Lobby, which in return (if the Asset is being accepted) sends the agent a signed TLS ClientAuth certificate.
+During the initial setup of your Agent, a unique public and private key will be generated.
+The agent sends the public key to the Lobby, which in return (if the Asset is being accepted)
+sends the agent a signed TLS ClientAuth certificate.
 
-The Gatekeeper is pulling the current root CA certificate from the Lobby, as well as the CRL and sends it to all the Brokers. The Brokers need this public root CA to verify the authenticity of the certificate (similar to TLS in Web traffic).
+The Gatekeeper is pulling the current root CA certificate from the Lobby,
+as well as the CRL and sends it to all the Brokers. The Brokers need this
+public root CA certificate to verify the authenticity of the presented certificate (similar to TLS in Web traffic).
 
-The agent will use the earlier issued certificate from the Lobby to communicate with the Broker. If the certificate is valid (i.e. it was signed by the root CA in the Lobby), it is allowed to continue further. If the certificate of the agent has been revoked (now in the CRL) or was not signed by the CA, it is denied.
+The agent will use the earlier issued certificate from the Lobby to communicate
+with the Broker. If the certificate is valid (i.e. it was signed by the root CA in the Lobby),
+it is allowed to continue further. If the certificate of the agent has been revoked (now in the CRL)
+or was not signed by the CA, it is denied.
 
 Asset Requests
 ~~~~~~~~~~~~~~
@@ -215,7 +256,8 @@ Actions you can take:
 - Revoke Certificate to deny connections from an asset
 - Edit Asset
 
-Once a certificate is revoked, the Agent communication is denied. The certificate will be placed in the CRL, which in return gets distributed by the Gatekeeper to all the Brokers.
+Once a certificate is revoked, the Agent communication is denied. The certificate
+will be placed in the CRL, which in return gets distributed by the Gatekeeper to all the Brokers.
 
 .. figure:: ../images/lobby_revoke_certificate.png
    :target: ../_images/lobby_revoke_certificate.png
@@ -235,9 +277,12 @@ Actions you can take here:
 - Issue Certificate to allow connections from an asset
 - Edit Asset
 
-If you want to allow a revoked asset to communicate with the Brokers again, you can do this here. The certificate belonging to the asset will be removed from the CRL, which in return gets distributed by the Gatekeeper to all the Brokers.
+If you want to allow a revoked asset to communicate with the Brokers again,
+you can do this here. The certificate belonging to the asset will be removed from the CRL,
+which in return gets distributed by the Gatekeeper to all the Brokers.
 
-From this point on, the Agent can communicate with the ASGARD through the Broker again. Revoking and Allowing certificates will reflect to the Brokers rather quickly.
+From this point on, the Agent can communicate with the ASGARD through the Broker again.
+Revoking and Allowing certificates will reflect to the Brokers rather quickly.
 
 Lobby Settings
 ~~~~~~~~~~~~~~
@@ -277,7 +322,9 @@ An Additional Role of ``Read-Only`` can be created.
 Lobby Settings - Lobby
 ^^^^^^^^^^^^^^^^^^^^^^
 
-In the Lobby Settings, you can see if Current Config is Available, which in return allows Agent Registration. This does not need to be changed, only during the initial setup you need to import the configuration.
+In the Lobby Settings, you can see if Current Config is Available, which in
+return allows Agent Registration. This does not need to be changed, only during
+the initial setup you need to import the configuration.
 
 Additionally, you can enable the ``Automatic Approval of ASGARD Agents``
 
@@ -297,7 +344,8 @@ You can upload a TLS Certificate for the Web Interface of the Lobby.
 Lobby Settings - NTP
 ^^^^^^^^^^^^^^^^^^^^
 
-You can change the NTP Settings of the Lobby here. An indicator is shown with additional details regarding the NTP Status.
+You can change the NTP Settings of the Lobby here. An indicator is shown with
+additional details regarding the NTP Status.
 
 .. figure:: ../images/lobby_settings_ntp.png
    :target: ../_images/lobby_settings_ntp.png
@@ -306,7 +354,8 @@ You can change the NTP Settings of the Lobby here. An indicator is shown with ad
 Lobby Settings - Syslog
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-You can configure Syslog Forwarding here, similar to the settings in your ASGARD, but only for your Lobby Logs.
+You can configure Syslog Forwarding here, similar to the settings in your
+ASGARD, but only for your Lobby Logs.
 
 .. figure:: ../images/lobby_settings_syslog.png
    :target: ../_images/lobby_settings_syslog.png
@@ -315,7 +364,8 @@ You can configure Syslog Forwarding here, similar to the settings in your ASGARD
 Lobby Settings - Upgrade
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-Here you can apply system upgrades for the lobby. Additional information regarding the system are shown as well. You can also see and download the upgrade log if necessary.
+Here you can apply system upgrades for the lobby. Additional information regarding
+the system are shown as well. You can also see and download the upgrade log if necessary.
 
 .. figure:: ../images/lobby_settings_upgrade.png
    :target: ../_images/lobby_settings_upgrade.png
@@ -324,7 +374,8 @@ Here you can apply system upgrades for the lobby. Additional information regardi
 Lobby Status
 ~~~~~~~~~~~~
 
-The Lobby Status on the left hand side of the navigation menu gives a good indicator if there are any issues with the system.
+The Lobby Status on the left hand side of the navigation menu gives a good
+indicator if there are any issues with the system.
 
 Lobby Status - OK
 ^^^^^^^^^^^^^^^^^
@@ -344,13 +395,15 @@ A yellow indicator means that one or more services are not running properly.
    :target: ../_images/lobby_status_navigation_warn.png
    :alt: Lobby Status - Warning
 
-Inspect the Diagnostics panel by clicking on the ``ASGARD Lobby Status`` button to get a better understanding of the issue.
+Inspect the Diagnostics panel by clicking on the ``ASGARD Lobby Status``
+button to get a better understanding of the issue.
 
 .. figure:: ../images/lobby_diagnostics_panel_warn.png
    :target: ../_images/lobby_diagnostics_panel_warn.png
    :alt: Lobby Diagnostics - Warning
 
-Here we can see that the Gatekeeper didn't contact the Lobby. You can see more details by clicking the magnifying glass to the right.
+Here we can see that the Gatekeeper didn't contact the Lobby. You can see more
+details by clicking the magnifying glass to the right.
 
 .. figure:: ../images/lobby_diagnostics_details_panel_warn.png
    :target: ../_images/lobby_diagnostics_details_panel_warn.png
@@ -440,4 +493,5 @@ In your Broker Network view, you can inspect the details of your Lobby:
    :target: ../_images/broker_network_lobby_details.png
    :alt: Broker Network View - Gatekeeper Details
 
-For configuration and Maintenance, use the Web Interface of the Lobby running on port ``9443``, see chapter :ref:`usage/administration:using the lobby`.
+For configuration and Maintenance, use the Web Interface of the Lobby running on port ``9443``,
+see chapter :ref:`usage/administration:using the lobby`.
