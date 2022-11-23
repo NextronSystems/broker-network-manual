@@ -19,7 +19,7 @@
 
 project = 'ASGARD Broker Network Manual'
 copyright = '2022, Nextron Systems'
-author = 'Stephan Kaiser, Florian Roth, Christian Burkard, Markus Meyer'
+author = 'Stephan Kaiser, Markus Meyer'
 
 
 # -- General configuration ---------------------------------------------------
@@ -29,8 +29,7 @@ author = 'Stephan Kaiser, Florian Roth, Christian Burkard, Markus Meyer'
 # ones.
 extensions = [
     'recommonmark',
-    'sphinx.ext.autosectionlabel',
-    'linuxdoc.rstFlatTable'
+    'sphinx.ext.autosectionlabel'
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -39,7 +38,7 @@ templates_path = ['_templates']
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
-exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
+exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', '.vscode']
 
 
 # -- Options for HTML output -------------------------------------------------
