@@ -5,20 +5,34 @@ Before You Begin
 Agent to ASGARD Communication
 -----------------------------
 
-There are a few things to consider before you start with the installation of you Broker Network. The communication between the ASGARD agent and the Broker Network is unidirectional. The ASGARD agent polls ASGARD, or one of the Brokers if configured, in a given timeframe and ask for tasks to execute. There is no active triggering from ASGARD or the Broker(s) to the ASGARD agent – we have designed it that way, because we believe that opening a port on all connected endpoints should and can be avoided. 
+There are a few things to consider before you start with the installation of you Broker Network.
+The communication between the ASGARD agent and the Broker Network is unidirectional.
+The ASGARD agent polls ASGARD, or one of the Brokers if configured, in a given timeframe
+and looks for tasks to execute. There is no active triggering from ASGARD or the Broker(s)
+to the ASGARD agent – we have designed it that way, because we believe that opening a port
+on all connected endpoints should and can be avoided. 
 
-The Broker Network acts as a gateway between ASGARD Agents and ASGARD itself. This allows for more flexibility within your ASGARD environment, such as remote agents or a dedicated Broker in your DMZ.
+The Broker Network acts as a gateway between ASGARD Agents and ASGARD itself. This allows
+for more flexibility within your ASGARD environment, such as remote agents which are not 
+using a VPN, or a dedicated Broker in your DMZ.
 
-If an ASGARD Agent is configured to work with your Broker Network, it can still connect directly to your ASGARD if the Broker can't be reached.
+If an ASGARD Agent is configured to work with your Broker Network, it can still connect
+directly to your ASGARD if the Broker can't be reached.
 
 Overview of the Components
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 There are three components which are needed for the Broker Network:
 
-   * **Lobby** - New ASGARD Agents will get a certificate for a secure communication from the Lobby. An administrator can accept the agents or configure the auto-accept option. Certificates for agents can also be revoked here.
-   * **Gatekeeper** - The Gatekeeper is used to communicate directly between all the components. Certificates and Revoke Lists get picked up from the Lobby and are being pushed to all Brokers.
-   * **Broker** - Your Broker is the components which your ASGARD Agents directly communicate with. Once an ASGARD Agent received a valid certificate from the Lobby, communication is possible. You can have multiple Broker configured
+   * **Lobby** - New ASGARD Agents will get a certificate for a secure communication
+     from the Lobby. An administrator can accept the agents or configure the auto-accept
+     option. Certificates for agents can also be revoked here.
+   * **Gatekeeper** - The Gatekeeper is used to communicate directly between all the
+     components. Certificates and Revoke Lists get picked up from the Lobby and are
+     being pushed to all Brokers.
+   * **Broker** - Your Broker is the component which your ASGARD Agents directly
+     communicate with. Once an ASGARD Agent received a valid certificate from the
+     Lobby, communication is possible. You can have multiple Brokers configured.
 
 .. figure:: ../images/broker_network_overview.png
    :target: ../_images/broker_network_overview.png
@@ -27,7 +41,9 @@ There are three components which are needed for the Broker Network:
 Using a Proxy between ASGARD Agent and ASGARD
 ---------------------------------------------
 
-ASGARD supports using a standard http proxy for the entire Agent to ASGARD communication. In order to use a proxy, the ASGARD agent must be repacked after installation. For details, see :ref:`usage/administration:agent installer`.
+ASGARD supports using a standard HTTP proxy for the entire Agent to ASGARD communication.
+In order to use a proxy, the ASGARD agent must be repacked after installation.
+For details, see :ref:`usage/administration:agent installer`.
 
 Hardware Requirements
 ---------------------
@@ -41,6 +57,7 @@ The required hardware for your Broker depends on the setup you are choosing.
 
 If you want to use only one Broker, you can use the hardware requirements from the table below.
 If you want to use multiple Brokers, you can split the hardware requirements evenly among your Brokers.
+This scenraio might be useful for networks with multiple segments to keep a proper segmentation.
 
 .. list-table::
    :header-rows: 1
@@ -70,7 +87,8 @@ If you want to use multiple Brokers, you can split the hardware requirements eve
 Your Broker uses roughly 1 CPU Core for 2,500 agents. Generally we do recommend to use
 the approach with multiple smaller Brokers instead of one big Broker.
 
-Example: For an environment of up to 10,000 agents, you can use the following hardware (per Broker):
+Example: For an environment of up to 10,000 agents, you can use the following hardware
+(per Broker; assuming all 10,000 agents communicate over the Broker Network):
 
   * 1 Broker
     
@@ -89,13 +107,16 @@ Example: For an environment of up to 10,000 agents, you can use the following ha
     - Hard Disk: 80 GB
 
 .. note:: 
-  Try not to go lower than 80 GB of storage and 3 GB of system memory for your Broker, as this might influence system stability after a while.
+  Try not to go lower than 80 GB of storage and 3 GB of system memory for
+  your Broker, as this might influence system stability after a while.
 
 ASGARD Gatekeeper Hardware
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The ASGARD Gatekeeper uses roughly the same amount of resources as your `ASGARD Management Center <https://asgard-manual.nextron-systems.com/en/latest/usage/requirements.html#hardware-requirements>`_, apart from the disk space.
-Please orientate yourself on the configuration of your ASGARD. The recommendations are the following:
+The ASGARD Gatekeeper uses roughly the same amount of resources as
+your `ASGARD Management Center <https://asgard-manual.nextron-systems.com/en/latest/usage/requirements.html#hardware-requirements>`_,
+apart from the disk space. Please orientate yourself on the configuration
+of your ASGARD. The recommendations are the following:
 
 .. list-table::
    :header-rows: 1
@@ -103,26 +124,24 @@ Please orientate yourself on the configuration of your ASGARD. The recommendatio
 
    * - Connected Endpoints
      - Minimum  Hardware Requirements
-   * - up to 500 [1]_
+   * - up to 500
      - System memory: 4 GB
        
        Hard disk: 200 GB
        
        CPU Cores: 2
-   * - up to 10,000 [1]_
+   * - up to 10,000
      - System memory: 8 GB
       
        Hard disk: 250 GB
        
        CPU Cores: 4
-   * - up to 25,000 [1]_
+   * - up to 25,000
      - System memory: 16 GB
       
        Hard disk: 300 GB
        
        CPU Cores: 4
-
-.. [1] THOR and AURORA count as individual endpoints in this calculation. AURORA is more demanding than THOR. This results in a maximum of 200/4000/10000 endpoints if THOR **and** AURORA are installed on each endpoint.
 
 ASGARD Lobby Hardware
 ^^^^^^^^^^^^^^^^^^^^^
@@ -165,8 +184,11 @@ ASGARD Agent
      - Lobby
 
 .. note::
-    The Lobby should not be exposed on the open internet. You can deploy your Lobby in your internal network and let all the agents pick up a certificate once they are being installed.
-    The communication between Agents and the Lobby is happening once during the initial communication, so that the Agents can get their key material for the secure channel.
+    The Lobby should not be exposed on the open internet. You can deploy
+    your Lobby in your internal network and let all the agents pick up a
+    certificate once they are being installed. The communication between
+    Agents and the Lobby is happening once during the initial communication,
+    so that the Agents can get their key material for the secure channel.
 
 Gatekeeper
 ^^^^^^^^^^
@@ -199,7 +221,8 @@ Gatekeeper
      - Broker
 
 .. note:: 
-    Your Gatekeeper is getting the CA and revoked certificates from the Lobby. Those certificates are in return sent to the all Brokers.
+    Your Gatekeeper is getting the CA and revoked certificates from the Lobby.
+    Those certificates are in return sent to the all Brokers.
 
 .. [2]
    Root CA Certificate (CA)
@@ -286,14 +309,18 @@ The Broker Network components are configured to retrieve updates from the follow
 .. [4]
   The NTP server configuration can be changed.
 
-All proxy systems should be configured to allow access to these URLs without TLS/SSL interception. (ASGARD uses client-side SSL certificates for authentication). It is possible to configure a proxy server, username and password during the setup process of the ASGARD platform. Only BASIC authentication is supported (no NTLM authentication support).
+All proxy systems should be configured to allow access to these URLs without
+TLS/SSL interception. (ASGARD uses client-side SSL certificates for authentication).
+It is possible to configure a proxy server, username and password during the setup
+process of the ASGARD platform. Only BASIC authentication is supported (no NTLM authentication support).
 
 DNS
 ^^^
 
 All the components need to have a resolvable FQDN.
 
-Brokers facing the open internet need to be resolvable with a FQDN, so make sure to configer the necessary A-Records before setting up an external facing Broker.
+Brokers facing the open internet need to be resolvable with a FQDN, so
+make sure to configure the necessary A-Records before setting up an external facing Broker.
 
 
 Verify the Downloaded ISO (Optional)

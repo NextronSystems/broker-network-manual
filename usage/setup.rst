@@ -20,7 +20,10 @@ There are three components which are needed for the Broker Network:
    :target: ../_images/broker_network_overview.png
    :alt: The Broker Network
 
-Set up a New ESX VM and Mount the ISO
+In this guide, we will assume a scenario with only one Broker, one Lobby and one Gatekeeper.
+If you wish to install multiple smaller sized Brokers, you can do so.
+
+Create a new ESX VM and mount the ISO
 -------------------------------------
 
 .. note::
@@ -52,7 +55,7 @@ and mount the same to your newly created VM.
 Please make sure to select a suitable v-switch or physical interface that reflects
 the IP address scheme you are planning to use for the new ASGARD.
 
-Navigate through the installer
+Navigate through the Installer
 ------------------------------
 
 The installation Process is started by clicking on ASGARD Graphical install.
@@ -85,8 +88,10 @@ The installer then loads the additional components from the ISO and lets you sel
 .. note::
    If DHCP is available, network parameters will be configured automatically.
    Without DHCP, ASGARD drops into the manual network configuration dialogue.
-   The IP address can be change later, see :ref:`usage/setup:Changing IP Addresses`
+   The IP address can be change later, see :ref:`usage/setup:changing the ip-address`
 
+Network Configuration
+---------------------
 
 .. figure:: ../images/setup_network1.png
    :target: ../_images/setup_network1.png
@@ -125,9 +130,17 @@ The installer then loads the additional components from the ISO and lets you sel
    :target: ../_images/setup_network7.png
    :alt: Configure the network
 
+Choosing a Password
+-------------------
+
 .. figure:: ../images/setup_password.png
    :target: ../_images/setup_password.png
    :alt: Set up users and passwords
+
+   Choosing a password for the ``nextron`` user
+
+Partitioning of the Hard Disk
+-----------------------------
 
 .. figure:: ../images/setup_disks1.png
    :target: ../_images/setup_disks1.png
@@ -142,6 +155,9 @@ Finally, write your configuration to the disk by selecting "Yes" and clicking "C
 If you are using a proxy to access the internet, enter the proxy details
 in the next step. Please note, **Internet connectivity is required** for
 the next step. 
+
+Proxy Configuration
+-------------------
 
 .. figure:: ../images/setup_proxy.png
    :target: ../_images/setup_proxy.png
@@ -158,9 +174,6 @@ your Virtualization Host, though SSH has more possibilities.
 Installing the Broker Network Components
 ----------------------------------------
 
-Installation of the Components
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
 After the base installation of your servers is completed, we can install the specific software for the components.
 
 You can now choose the role you want to install (Broker, Gatekeeper or Lobby):
@@ -169,7 +182,7 @@ You can now choose the role you want to install (Broker, Gatekeeper or Lobby):
    :target: ../_images/broker_nextronInstaller.png
    :alt: the nextronInstaller
 
-You can install the three servers in any order, as we will configure them once they are all up and running.
+You can install the three [1]_ servers in any order, as we will configure them once they are all up and running.
 
 .. warning::
    The Broker Network needs a minimum version of 2.14.0 of the ASGARD
@@ -178,6 +191,9 @@ You can install the three servers in any order, as we will configure them once t
    If you still can't see the ``Broker Network`` tab in your
    ``Asset Management``, restart the ``asgard2`` service in ``Settings``
    > ``System`` > ``Services``.
+
+.. [1]
+   This number may vary. In this example we went with the minimum of one Broker, one Lobby and one Gatekeeper.
 
 Gatekeeper Installation
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -292,8 +308,8 @@ This will change once we configured our ASGARD with the Broker.
 To configure your Broker in the ASGARD Management Center,
 we will continue later in the chapter :ref:`usage/administration:Broker Configuration`.
 
-Changing IP Addresses
----------------------
+Changing the IP-Address
+-----------------------
 
 You components IP Addresses can be changed in **/etc/network/interfaces**. The IP is configured with the address variable.
 

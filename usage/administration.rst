@@ -58,7 +58,7 @@ in your your ASGARD (magnifying glass icon):
    :target: ../_images/setup_gatekeeper7.png
    :alt: Setting up the Gatekeeper
 
-To see if the Gatekeeper is running correctly, you can run the following command:
+To see if the Gatekeeper is running correctly, you can run the following command (status should be ``active (running)``):
 
 .. code-block:: console
 
@@ -86,7 +86,7 @@ To do this, we have to connect the Lobby to our ASGARD Management Center.
 Navigate to ``Asset Management`` > ``Broker Network`` in your ASGARD Management Center.
 You can now add a new Lobby on the top right corner. Please fill in the
 FQDN again and click ``Submit``. You can assign a ``Group`` to group the
-Lobby and one or multiple Broker into one group. If you are planning to only
+Lobby and one or multiple Brokers into one group. If you are planning to only
 use one Lobby you can leave the value as ``default``. A pop-up will appear with
 configuration instructions. Download the configuration file, we will use this now in our Lobby.
 
@@ -102,7 +102,7 @@ upload the configuration file we downloaded in the last step:
    :alt: Using the Lobby
 
 After you uploaded the configuration to your Lobby, you should now see that
-the Lobby is connected with your ASGARD Management Center:
+the Lobby is connected with your ASGARD Management Center (Broker Network view in your ASGARD):
 
 .. figure:: ../images/setup_lobby8.png
    :target: ../_images/setup_lobby8.png
@@ -120,17 +120,19 @@ Once you installed your Broker via the ``nextronInstaller`` you can start to con
 To do this, we have to connect the Broker to our ASGARD Management Center.
 Navigate to ``Asset Management`` > ``Broker Network`` in your ASGARD Management Center.
 
-On the top right corner, click ``Add Broker``. Please fill in the FQDN
-for the Gatekeeper. Additionally, if the Broker should be reached via
-the open internet, you can assign a FQDN for the agents as well (make
-sure to set the A-Record in your public domain). You can leave the ``Group``
+On the top right corner, click ``Add Broker``. Please fill in the ``FQDN
+for Gatekeeper`` - this is the FQDN which your Gatekeeper will use to communicate
+with this Broker. Additionally, if the Broker should be reached via
+the open internet, you can assign ``FQDN for Agents`` as well (make
+sure to set the A-Record in your public domain). If you leave the ``FQDN for Agents``
+empty, your agents will use the value of ``FQDN for Gatekeeper``. You can leave the ``Group``
 as default, but should change it accordingly if you set a different group earlier for your Lobby.
 
 .. figure:: ../images/setup_broker3.png
    :target: ../_images/setup_broker3.png
    :alt: Installing the Broker
 
-After you confirmed your Broker FQDN, you will get another pop-up with a command
+After you confirmed the settings for your new Broker, you will get another pop-up with a command
 (``sudo asgard2-gatekeeper-install '<TOKEN>'``). Please copy this command and
 execute it on the broker via SSH:
 
@@ -142,15 +144,18 @@ execute it on the broker via SSH:
    :target: ../_images/setup_broker5.png
    :alt: Setting up the Broker
 
-Once you are done, you can check the status and other settings of the Gatekeeper in your your ASGARD (magnifying glass icon):
+Once you are done, you can check the status and other settings of the Broker
+in your your ASGARD Management Center (magnifying glass icon):
 
 .. figure:: ../images/setup_broker6.png
    :target: ../_images/setup_broker6.png
    :alt: Setting up the Broker
 
+In this menu of your Gatekeeper, you can also configure NTP or rsyslog.
+
 You might need to restart the Broker after the initial setup.
 
-To see if the Gatekeeper is running correctly, you can run the following command:
+To see if the Gatekeeper is running correctly, you can run the following command (status should be ``active (running)``):
 
 .. code-block:: console
 
@@ -205,7 +210,8 @@ Using the Lobby
 ---------------
 
 The Lobby is the component in your Broker Network which needs a little more attention.
-The Lobby is distributing or revoking certificates for ASGARD Agents.
+The Lobby is distributing or revoking certificates for ASGARD Agents, which are needed
+to communicate over the secure channel of the Broker Network.
 The first thing your Agents, if configured to use your Broker Network, will do,
 is to contact your Lobby. They need a unique certificate to be able to communicate with your Brokers.
 
@@ -213,14 +219,14 @@ During the initial setup of your Agent, a unique public and private key will be 
 The agent sends the public key to the Lobby, which in return (if the Asset is being accepted)
 sends the agent a signed TLS ClientAuth certificate.
 
-The Gatekeeper is pulling the current root CA certificate from the Lobby,
+The Gatekeeper is pulling the current CA certificate from the Lobby,
 as well as the CRL and sends it to all the Brokers. The Brokers need this
-public root CA certificate to verify the authenticity of the presented certificate (similar to TLS in Web traffic).
+CA certificate to verify the authenticity of the presented certificate (similar to TLS in Web traffic).
 
 The agent will use the earlier issued certificate from the Lobby to communicate
 with the Broker. If the certificate is valid (i.e. it was signed by the root CA in the Lobby),
 it is allowed to continue further. If the certificate of the agent has been revoked (now in the CRL)
-or was not signed by the CA, it is denied.
+or was not signed by the CA, communication is denied.
 
 Asset Requests
 ~~~~~~~~~~~~~~
@@ -430,8 +436,8 @@ Here we can see that the Lobby can't reach the update server. You can see more d
    :target: ../_images/lobby_diagnostics_details_panel_error.png
    :alt: Lobby Diagnostics - Error
 
-Broker Network in the ASGARD
-----------------------------
+Broker Network in the ASGARD Management Center
+----------------------------------------------
 
 The Broker Network view in your ASGARD gives you:
 
