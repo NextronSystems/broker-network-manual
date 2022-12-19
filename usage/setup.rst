@@ -332,3 +332,20 @@ You components IP Addresses can be changed in **/etc/network/interfaces**. The I
 The new IP can be applied with the command ``sudo systemctl restart networking``.
 
 Make sure to update the A-Records in your local DNS Server to reflect the IP changes.
+
+Verifying DNS Settings
+^^^^^^^^^^^^^^^^^^^^^^
+
+To verify if your components are using the correct DNS Server, you can inspect the file ``/etc/resolv.conf``:
+
+.. code-block:: console
+
+   nextron@asgard-ac:~$ cat /etc/resolv.conf 
+   search example.org
+   nameserver 172.16.200.2
+
+If you see errors in this configuration, you can change it with the following command:
+
+.. code-block:: console
+
+   nextron@asgard-ac:~$ sudoedit /etc/resolv.conf
