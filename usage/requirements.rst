@@ -7,7 +7,7 @@ Agent to ASGARD Communication
 
 There are a few things to consider before you start with the installation of you Broker Network.
 The communication between the ASGARD agent and the Broker Network is unidirectional.
-The ASGARD agent polls ASGARD, or one of the Brokers if configured, in a given timeframe
+The ASGARD agent polls ASGARD, or one of the Brokers if configured, in a given time frame
 and looks for tasks to execute. There is no active triggering from ASGARD or the Broker(s)
 to the ASGARD agent – we have designed it that way, because we believe that opening a port
 on all connected endpoints should and can be avoided. 
@@ -57,7 +57,7 @@ The required hardware for your Broker depends on the setup you are choosing.
 
 If you want to use only one Broker, you can use the hardware requirements from the table below.
 If you want to use multiple Brokers, you can split the hardware requirements evenly among your Brokers.
-This scenraio might be useful for networks with multiple segments to keep a proper segmentation.
+This scenario might be useful for networks with multiple segments to keep a proper segmentation.
 
 .. list-table::
    :header-rows: 1
@@ -354,7 +354,7 @@ or in Windows command prompt
     efccb4df0a95aa8e562d42707cb5409b866bd5ae8071c4f05eec6a10778f354b
     CertUtil: -hashfile command completed successfully.  
 
-or in powerhsell
+or in Powershell
 
 .. code-block:: ps1con
 
