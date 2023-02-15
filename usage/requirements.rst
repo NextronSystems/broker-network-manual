@@ -161,7 +161,9 @@ ASGARD Lobby Hardware
 Network Requirements
 --------------------
 
-The ASGARD components use the following ports.
+The ASGARD components use the ports in the following chapters.
+For a detailed and up to date list of our update and licensing
+servers, please visit https://www.nextron-systems.com/hosts/.
 
 ASGARD Agent
 ^^^^^^^^^^^^
@@ -279,7 +281,7 @@ Management Workstation
 Internet
 ^^^^^^^^
 
-The Broker Network components are configured to retrieve updates from the following remote system:
+The Broker Network components are configured to retrieve updates from the following remote system.
 
 .. list-table:: 
    :header-rows: 1
