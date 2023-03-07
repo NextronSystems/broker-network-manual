@@ -28,8 +28,9 @@ author = 'Stephan Kaiser, Markus Meyer'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    'recommonmark',
-    'sphinx.ext.autosectionlabel'
+    'sphinx.ext.autosectionlabel',
+    'sphinx_rtd_theme',
+    'sphinx_search.extension'
 ]
 
 # Add any paths that contain templates here, relative to this directory.
