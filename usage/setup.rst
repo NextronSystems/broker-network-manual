@@ -17,7 +17,6 @@ There are three components which are needed for the Broker Network:
      You can have multiple Broker configured
 
 .. figure:: ../images/broker_network_overview.png
-   :target: ../_images/broker_network_overview.png
    :alt: The Broker Network
 
 In this guide, we will assume a scenario with only one Broker, one Lobby and one Gatekeeper.
@@ -37,19 +36,15 @@ target version. It is recommended to upload the ASGARD ISO to an accessible data
 and mount the same to your newly created VM. 
 
 .. figure:: ../images/setup_esx1.png
-   :target: ../_images/setup_esx1.png
    :alt: New Virtual Machine - ESX
 
 .. figure:: ../images/setup_esx2.png
-   :target: ../_images/setup_esx2.png
    :alt: New Virtual Machine - ESX
 
 .. figure:: ../images/setup_esx3.png
-   :target: ../_images/setup_esx3.png
    :alt: New Virtual Machine - ESX
 
 .. figure:: ../images/setup_esx4.png
-   :target: ../_images/setup_esx4.png
    :alt: New Virtual Machine - ESX
 
 Please make sure to select a suitable v-switch or physical interface that reflects
@@ -63,26 +58,21 @@ The installer then loads the additional components from the ISO and lets you sel
 
 
 .. figure:: ../images/setup_iso_installer.png
-   :target: ../_images/setup_iso_installer.png
    :alt: ISO Installer - ASGARD
 
 .. figure:: ../images/setup_language.png
-   :target: ../_images/setup_language.png
    :alt: Select a language
 
 .. figure:: ../images/setup_location1.png
-   :target: ../_images/setup_location1.png
    :alt: Select your location
 
 .. figure:: ../images/setup_location2.png
-   :target: ../_images/setup_location2.png
    :alt: Select your location
 
 .. warning::
    Please make sure to select the correct Country, as this will also set your local timezone!
 
 .. figure:: ../images/setup_locales.png
-   :target: ../_images/setup_locales.png
    :alt: Configure locales
 
 .. note::
@@ -94,30 +84,24 @@ Network Configuration
 ---------------------
 
 .. figure:: ../images/setup_network1.png
-   :target: ../_images/setup_network1.png
    :alt: Configure the network
 
 .. figure:: ../images/setup_network2.png
-   :target: ../_images/setup_network2.png
    :alt: Configure the network
 
 .. figure:: ../images/setup_network3.png
-   :target: ../_images/setup_network3.png
    :alt: Configure the network
 
 .. figure:: ../images/setup_network4.png
-   :target: ../_images/setup_network4.png
    :alt: Configure the network
 
 .. warning::
    ASGARD needs to be able to resolve internal and external IP addresses.
 
 .. figure:: ../images/setup_network5.png
-   :target: ../_images/setup_network5.png
    :alt: Configure the network
 
 .. figure:: ../images/setup_network6.png
-   :target: ../_images/setup_network6.png
    :alt: Configure the network
 
 .. warning::
@@ -127,14 +111,12 @@ Network Configuration
    that cannot be resolved on the clients, no agent will be able to find and reconnect to the ASGARD server. 
 
 .. figure:: ../images/setup_network7.png
-   :target: ../_images/setup_network7.png
    :alt: Configure the network
 
 Choosing a Password
 -------------------
 
 .. figure:: ../images/setup_password.png
-   :target: ../_images/setup_password.png
    :alt: Set up users and passwords
 
    Choosing a password for the ``nextron`` user
@@ -143,13 +125,11 @@ Partitioning of the Hard Disk
 -----------------------------
 
 .. figure:: ../images/setup_disks1.png
-   :target: ../_images/setup_disks1.png
    :alt: Partition disks
 
 Finally, write your configuration to the disk by selecting "Yes" and clicking "Continue".
 
 .. figure:: ../images/setup_disks2.png
-   :target: ../_images/setup_disks2.png
    :alt: Partition disks
 
 If you are using a proxy to access the internet, enter the proxy details
@@ -160,7 +140,6 @@ Proxy Configuration
 -------------------
 
 .. figure:: ../images/setup_proxy.png
-   :target: ../_images/setup_proxy.png
    :alt: Finish the installation
 
 The base installation is now complete. In the next step we will install
@@ -179,7 +158,6 @@ After the base installation of your servers is completed, we can install the spe
 You can now choose the role you want to install (Broker, Gatekeeper or Lobby):
 
 .. figure:: ../images/broker_nextronInstaller.png
-   :target: ../_images/broker_nextronInstaller.png
    :alt: the nextronInstaller
 
 You can install the three [1]_ servers in any order, as we will configure them once they are all up and running.
@@ -205,13 +183,11 @@ To install the Gatekeeper, run the following command on your newly installed sys
     nextron@gatekeeper:~$ sudo nextronInstaller -gatekeeper
 
 .. figure:: ../images/setup_gatekeeper1.png
-   :target: ../_images/setup_gatekeeper1.png
    :alt: Installing the Gatekeeper
 
 After the installation is done, you will see the following message:
 
 .. figure:: ../images/setup_gatekeeper2.png
-   :target: ../_images/setup_gatekeeper2.png
    :alt: Installing the Gatekeeper
 
 You can now check if the service was installed successfully. 
@@ -236,7 +212,6 @@ To install the Lobby, run the following command on your newly installed system:
    nextron@lobby:~$ sudo nextronInstaller -lobby
 
 .. figure:: ../images/setup_lobby1.png
-   :target: ../_images/setup_lobby1.png
    :alt: Installing the Lobby
 
 After a short while you will be prompted to enter a password for the
@@ -248,13 +223,11 @@ After a short while you will be prompted to enter a password for the
       - Contain at least one upper- and lowercase letter, one digit and one special character
 
 .. figure:: ../images/setup_lobby2.png
-   :target: ../_images/setup_lobby2.png
    :alt: Installing the Lobby
 
 After the installation is finished, you will see the following message:
 
 .. figure:: ../images/setup_lobby3.png
-   :target: ../_images/setup_lobby3.png
    :alt: Installing the Lobby
 
 You can check the service to see if everything is up and running.
@@ -264,14 +237,12 @@ You can check the service to see if everything is up and running.
    nextron@lobby:~$ systemctl status asgard-lobby.service
 
 .. figure:: ../images/setup_lobby4.png
-   :target: ../_images/setup_lobby4.png
    :alt: Installing the Lobby
 
 You can now navigate to the web interface of the lobby :samp:`https://<FQDN>:9443`.
 Please log into the Lobby with the user ``admin`` and the password you chose during the installation:
 
 .. figure:: ../images/setup_lobby5.png
-   :target: ../_images/setup_lobby5.png
    :alt: Using the Lobby
 
 To configure your Lobby in the ASGARD Management Center,
@@ -287,13 +258,11 @@ To install a Broker, run the following command on your newly installed system
    nextron@broker:~$ sudo nextronInstaller -broker
 
 .. figure:: ../images/setup_broker1.png
-   :target: ../_images/setup_broker1.png
    :alt: Installing a Broker
 
 After the installation is finished, you will see the following message:
 
 .. figure:: ../images/setup_broker2.png
-   :target: ../_images/setup_broker2.png
    :alt: Installing a Broker
 
 You can now check if the service was installed successfully.

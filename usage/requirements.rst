@@ -35,7 +35,6 @@ There are three components which are needed for the Broker Network:
      Lobby, communication is possible. You can have multiple Brokers configured.
 
 .. figure:: ../images/broker_network_overview.png
-   :target: ../_images/broker_network_overview.png
    :alt: The Broker Network
 
 Using a Proxy between ASGARD Agent and ASGARD
