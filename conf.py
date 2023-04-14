@@ -78,3 +78,5 @@ smartquotes = False
 autosectionlabel_prefix_document = True
 autosectionlabel_maxdepth = 4
 
+# tweak search
+82 rtd_sphinx_search_file_type = "un-minified"
