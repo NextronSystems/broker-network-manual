@@ -29,7 +29,8 @@ author = 'Stephan Kaiser, Markus Meyer'
 # ones.
 extensions = [
     'sphinx.ext.autosectionlabel',
-    'sphinx_rtd_theme'
+    'sphinx_rtd_theme',
+    'sphinx_copybutton'
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -77,5 +78,5 @@ smartquotes = False
 autosectionlabel_prefix_document = True
 autosectionlabel_maxdepth = 4
 
-# tweak search
-82 rtd_sphinx_search_file_type = "un-minified"
+# copybutton exclude pygments
+copybutton_exclude = '.linenos, .gp, .go'
