@@ -12,9 +12,9 @@ There are three components which are needed for the Broker Network:
      Certificates for agents can also be revoked here.
    * **Gatekeeper** - The Gatekeeper is used to communicate directly between all the components.
      Certificates and Revoke Lists get picked up from the Lobby and are being pushed to all Brokers.
-   * **Broker** - Your Broker is the components which your ASGARD Agents directly communicate with.
+   * **Broker** - Your Broker(s) are the component which your ASGARD Agents communicate with.
      Once an ASGARD Agent received a valid certificate from the Lobby, communication is possible.
-     You can have multiple Broker configured
+     You can have multiple Brokers configured.
 
 .. figure:: ../images/broker_network_overview.png
    :alt: The Broker Network

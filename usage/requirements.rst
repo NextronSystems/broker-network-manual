@@ -185,11 +185,14 @@ ASGARD Agent
      - Lobby
 
 .. note::
-    The Lobby should not be exposed on the open internet. You can deploy
-    your Lobby in your internal network and let all the agents pick up a
-    certificate once they are being installed. The communication between
-    Agents and the Lobby is happening once during the initial communication,
-    so that the Agents can get their key material for the secure channel.
+    The Lobby should not be exposed to the open internet if possible.
+    You should deploy your Lobby in your internal network, so most of
+    your agents can perform the necessary steps to be allowed into the
+    broker network. The Lobby is the first point of contact for new agents
+    and this onboarding phase is happening once during the initial
+    communication, so that the agents can get their unique key material
+    for the secure channel  with the broker endpoints. For more information
+    on how the Lobby operates, see the chapter :ref:`usage/administration:using the lobby`.
 
 Gatekeeper
 ^^^^^^^^^^
@@ -222,8 +225,9 @@ Gatekeeper
      - Broker
 
 .. note:: 
-    Your Gatekeeper is getting the CA and revoked certificates from the Lobby.
-    Those certificates are in return sent to the all Brokers.
+    Your Gatekeeper is receiving the root CA certificate, client certificates
+    and CRL from the Lobby. Those are then being transmitted to the all Brokers
+    via the Gatekeeper, to keep an up to date state of allowed and revoked agents.
 
 .. [2]
    Root CA Certificate (CA)
@@ -268,19 +272,19 @@ Management Workstation
      - 22/tcp
      - Workstation
      - Gatekeeper
-   * - Web administration
-     - 9443/tcp
-     - Workstation
-     - Lobby
    * - CLI administration
      - 22/tcp
+     - Workstation
+     - Lobby
+   * - Web administration
+     - 9443/tcp
      - Workstation
      - Lobby
 
 Internet
 ^^^^^^^^
 
-The Broker Network components are configured to retrieve updates from the following remote system.
+The Broker Network components are configured to retrieve updates from the following remote systems.
 
 .. list-table:: 
    :header-rows: 1
@@ -320,7 +324,7 @@ DNS
 
 All the components need to have a resolvable FQDN.
 
-Brokers facing the open internet need to be resolvable with a FQDN, so
+Brokers facing the open internet need to be resolvable with a public FQDN and IP Address, so
 make sure to configure the necessary A-Records before setting up an external facing Broker.
 
 

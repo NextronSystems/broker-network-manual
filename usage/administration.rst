@@ -4,19 +4,9 @@ Administration
 Configuration of the Components
 -------------------------------
 
-The installation can be done as usual after the base image was installed via the ISO file.
-After the installation is done, you can choose the role you want to install:
-
-.. figure:: ../images/broker_nextronInstaller.png
-   :alt: the nextronInstaller
-
-You can install the three servers in any order, as we will configure them once they are all up and running.
-
-.. warning::
-   The Broker Network needs a minimum version of 2.14.0 of the ASGARD Management Center.
-   Please make sure you installed your Broker Network license in your ASGARD.
-   If you still can't see the ``Broker Network`` Tab in your ``Asset Management``,
-   restart the ``asgard2`` service in ``Settings`` > ``System`` > ``Services``.
+This chapter assumes you already installed at least one Lobby, one Gatekeeper and one Broker.
+If you did not do this yet, please get back to chapter :ref:`usage/setup:overview of the components`
+and follow the instructions carefully.
 
 Gatekeeper Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -36,7 +26,7 @@ Once you clicked on the Edit Button, a pop-up will appear. Please set the FQDN o
 .. figure:: ../images/setup_gatekeeper4.png
    :alt: Setting up the Gatekeeper
 
-After you confirmed your Gatekeeper FQDN, you will get another pop-up with a
+After you confirmed your Gatekeeper's FQDN, you will get another pop-up with a
 command (``sudo asgard2-gatekeeper-install '<TOKEN>'``). Please copy this
 command and execute it on the gatekeeper via SSH:
 
@@ -47,7 +37,7 @@ command and execute it on the gatekeeper via SSH:
    :alt: Setting up the Gatekeeper
 
 Once you are done, you can check the status and other settings of the Gatekeeper
-in your your ASGARD (magnifying glass icon):
+in your ASGARD (magnifying glass icon):
 
 .. figure:: ../images/setup_gatekeeper7.png
    :alt: Setting up the Gatekeeper
@@ -79,7 +69,7 @@ Once you installed your Lobby via the ``nextronInstaller`` you can start to conf
 To do this, we have to connect the Lobby to our ASGARD Management Center.
 Navigate to ``Asset Management`` > ``Broker Network`` in your ASGARD Management Center.
 You can now add a new Lobby on the top right corner. Please fill in the
-FQDN again and click ``Submit``. You can assign a ``Group`` to group the
+FQDN and click ``Submit``. You can assign a ``Group`` to group the
 Lobby and one or multiple Brokers into one group. If you are planning to only
 use one Lobby you can leave the value as ``default``. A pop-up will appear with
 configuration instructions. Download the configuration file, we will use this now in our Lobby.
@@ -114,7 +104,7 @@ Navigate to ``Asset Management`` > ``Broker Network`` in your ASGARD Management 
 On the top right corner, click ``Add Broker``. Please fill in the ``FQDN
 for Gatekeeper`` - this is the FQDN which your Gatekeeper will use to communicate
 with this Broker. Additionally, if the Broker should be reached via
-the open internet, you can assign ``FQDN for Agents`` as well (make
+the open internet, you should assign ``FQDN for Agents`` as well (make
 sure to set the A-Record in your public domain). If you leave the ``FQDN for Agents``
 empty, your agents will use the value of ``FQDN for Gatekeeper``. You can leave the ``Group``
 as default, but should change it accordingly if you set a different group earlier for your Lobby.
@@ -138,11 +128,11 @@ in your your ASGARD Management Center (magnifying glass icon):
 .. figure:: ../images/setup_broker6.png
    :alt: Setting up the Broker
 
-In this menu of your Gatekeeper, you can also configure NTP or rsyslog.
+In this menu of your Broker, you can also configure NTP or rsyslog.
 
 You might need to restart the Broker after the initial setup.
 
-To see if the Gatekeeper is running correctly, you can run the following command (status should be ``active (running)``):
+To see if the Broker is running correctly, you can run the following command (status should be ``active (running)``):
 
 .. code-block:: console
 
@@ -172,8 +162,8 @@ gave your Lobby and your Broker(s). After you added the agent installer, make su
 .. figure:: ../images/setup_agent_installer2.png
    :alt: New Agent Installer
 
-Update Agent's Broker Network
------------------------------
+Migrate existing Agents to Broker Network
+-----------------------------------------
 
 If you need to update existing ASGARD Agents with your new configuration for the
 Broker Network, you can create a (Scheduled) Group Task.
