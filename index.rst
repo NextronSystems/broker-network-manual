@@ -1,25 +1,32 @@
-.. ASGARD Manual documentation master file, created by
-   sphinx-quickstart on Mon Jul  6 15:04:24 2020.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+.. index:: Home
 
 Welcome to ASGARD's Broker Network documentation!
 =================================================
 
+Beginning from the Version 2.14.0 of the ASGARD Management Center, you
+can install a Broker Network in your environment (a special license is
+needed for this feature). This is designed to be your gateway which is
+placed in front of the ASGARD. You can use this for multiple Scenarios:
+
+- Multiple Brokers for load balancing
+- Multiple Brokers for load sharing
+- Internet facing Broker for remote clients
+- DMZ facing Broker
+
+In the following chapters we will describe how to set this network up.
+
 .. toctree::
    :maxdepth: 2
    :numbered:
-   :caption: Contents:
+   :caption: Contents
 
-   usage/introduction
-   usage/requirements
-   usage/setup
-   usage/administration
-   usage/known-issues
-   usage/troubleshooting
+   requirements/index
+   setup/index
+   administration/index
+   issues/index
+   troubleshooting/index
 
+Index
+=====
 
-Indices and tables
-==================
-
-* :ref:`search`
+* :ref:`genindex`
