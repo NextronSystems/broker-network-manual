@@ -12,13 +12,13 @@ ASGARD Agent
 
 .. list-table:: 
    :header-rows: 1
-   :widths: 30, 20, 25, 25
+   :widths: 35, 15, 25, 25
 
    * - Description
      - Port
      - Source
      - Destination
-   * - Agent / Server communication
+   * - Agent to Server communication
      - 443/tcp
      - ASGARD Agent
      - Broker / ASGARD
@@ -27,15 +27,46 @@ ASGARD Agent
      - ASGARD Agent
      - Lobby
 
-.. note::
-    The Lobby should not be exposed to the open internet if possible.
-    You should deploy your Lobby in your internal network, so most of
-    your agents can perform the necessary steps to be allowed into the
-    broker network. The Lobby is the first point of contact for new agents
-    and this onboarding phase is happening once during the initial
-    communication, so that the agents can get their unique key material
-    for the secure channel  with the broker endpoints. For more information
-    on how the Lobby operates, see the chapter :ref:`administration/lobby_usage:using the lobby`.
+.. warning::
+  Your agents will always try to contact your ASGARD directly, and if this fails,
+  they will try the Lobby or Brokers. If you are deploying agents with a
+  broker network configuration in your internal network, and they **can** contact
+  the ASGARD directly, they will not be able to get a valid certificate from
+  your Lobby. This is not an issue if your Lobby is exposed to the internet and
+  your agents will be able to request a certificate once they are connecting from
+  the open internet.
+  
+  If your Lobby is not exposed to the internet, the agents **must not** be able to
+  contact your ASGARD directly, but rather your Lobby. To do this, you have to
+  ensure your agents will not be able to communicate directly with your ASGARD,
+  but only directly with the Lobby and a Broker (e.g. your ASGARD sits behind an
+  internal Broker and can not be reached directly).
+  
+  It is important to remember that your agents need a valid certificate from your
+  Lobby, otherwise the Broker connection can not be established. This "onboarding
+  phase" is happening once during the initial communication, so that your agents
+  can get their unique key material for the secure channel within the broker
+  network. For more information on how the Lobby operates, see the chapter
+  :ref:`administration/lobby_usage:using the lobby`.
+
+The following priorities of servers your agents try to connect to are in place:
+
+.. list-table:: 
+   :header-rows: 1
+   :widths: 30, 20, 40
+
+   * - Server
+     - Priority
+     - Info
+   * - ASGARD
+     - 1
+     - Always highest priority
+   * - Lobby
+     - 2
+     - If agent has no Broker Certificate
+   * - Broker
+     - 3
+     - If agent has Broker Certificate
 
 Gatekeeper
 ^^^^^^^^^^
@@ -168,4 +199,5 @@ DNS
 All the components need to have a resolvable FQDN.
 
 Brokers facing the open internet need to be resolvable with a public FQDN and IP Address, so
-make sure to configure the necessary A-Records before setting up an external facing Broker.
+make sure to configure the necessary A-Records before setting up an external facing Broker
+and/or Lobby.
