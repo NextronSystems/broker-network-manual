@@ -21,23 +21,23 @@ This scenario might be useful for networks with multiple segments to keep a prop
    * - Connected Endpoints
      - Combined Hardware Requirements
    * - up to 500
-     - CPU Cores: 1
+     - \- CPU Cores: 1
       
-       System memory: 4 GB
+       \- System memory: 4 GB
        
-       Hard Disk: 80 GB
+       \- Hard Disk: 80 GB
    * - up to 10,000
-     - CPU Cores: 4
+     - \- CPU Cores: 4
       
-       System memory: 6 GB
+       \- System memory: 6 GB
       
-       Hard Disk: 200 GB
+       \- Hard Disk: 200 GB
    * - up to 25,000
-     - CPU Cores: 10
+     - \- CPU Cores: 10
 
-       System memory: 16 GB
+       \- System memory: 16 GB
       
-       Hard Disk: 500 GB
+       \- Hard Disk: 500 GB
 
 Your Broker uses roughly 1 CPU Core for 2,500 agents. Generally we do recommend to use
 the approach with multiple smaller Brokers instead of one big Broker.
@@ -80,23 +80,23 @@ of your ASGARD. The recommendations are the following:
    * - Connected Endpoints
      - Minimum  Hardware Requirements
    * - up to 500
-     - System memory: 4 GB
+     - \- System memory: 4 GB
        
-       Hard disk: 200 GB
+       \- Hard disk: 200 GB
        
-       CPU Cores: 2
+       \- CPU Cores: 2
    * - up to 10,000
-     - System memory: 8 GB
+     - \- System memory: 8 GB
       
-       Hard disk: 250 GB
+       \- Hard disk: 250 GB
        
-       CPU Cores: 4
+       \- CPU Cores: 4
    * - up to 25,000
-     - System memory: 16 GB
+     - \- System memory: 16 GB
       
-       Hard disk: 300 GB
+       \- Hard disk: 300 GB
        
-       CPU Cores: 4
+       \- CPU Cores: 4
 
 ASGARD Lobby Hardware
 ^^^^^^^^^^^^^^^^^^^^^

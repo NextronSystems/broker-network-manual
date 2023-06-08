@@ -79,15 +79,16 @@ Gatekeeper
      - Port
      - Source
      - Destination
-   * - Statistics
- 
-       pull CA [2]_ and CRL [3]_
+   * - \- Statistics
+
+       \- pull CA [2]_ and CRL [3]_
      - 12000/tcp
      - Gatekeeper
      - Lobby
-   * - Statistics
+   * - \- Statistics
 
-       push CA [2]_ and CRL [3]_
+       \- push CA [2]_ and CRL [3]_
+        
      - 12000/tcp
      - Gatekeeper
      - Broker
@@ -120,9 +121,9 @@ ASGARD
      - Port
      - Source
      - Destination
-   * - Backend management of Gatekeeper, Broker and Lobby
+   * - \- Backend management of Gatekeeper, Broker and Lobby
  
-       Agent communication
+       \- Agent communication
      - 12000/tcp
      - ASGARD
      - Gatekeeper
