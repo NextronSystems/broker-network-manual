@@ -70,22 +70,27 @@ Navigate to ``Asset Management`` > ``Broker Network`` in your ASGARD Management 
 You can now add a new Lobby on the top right corner. Please fill in the
 FQDN and click ``Submit``. You can assign a ``Group`` to group the
 Lobby and one or multiple Brokers into one group. If you are planning to only
-use one Lobby you can leave the value as ``default``. A pop-up will appear with
-configuration instructions. Download the configuration file, we will use this now in our Lobby.
+use one Lobby you can leave the value as ``default``.
 
 .. figure:: ../images/setup_lobby6.png
+   :alt: Using the Lobby
+
+A pop-up will appear with configuration instructions. Download the
+configuration file, we will use this now in our Lobby.
+
+.. figure:: ../images/setup_lobby7.png
    :alt: Using the Lobby
 
 In your Lobby, navigate to ``System Settings`` > ``Lobby``. Here you can
 upload the configuration file we downloaded in the last step:
 
-.. figure:: ../images/setup_lobby7.png
+.. figure:: ../images/setup_lobby8.png
    :alt: Using the Lobby
 
 After you uploaded the configuration to your Lobby, you should now see that
 the Lobby is connected with your ASGARD Management Center (Broker Network view in your ASGARD):
 
-.. figure:: ../images/setup_lobby8.png
+.. figure:: ../images/setup_lobby9.png
    :alt: Using the Lobby
 
 .. note:: 

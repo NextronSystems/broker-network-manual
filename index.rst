@@ -23,8 +23,10 @@ In the following chapters we will describe how to set this network up.
    requirements/index
    setup/index
    administration/index
+   update/index
    issues/index
    troubleshooting/index
+
 
 Index
 =====

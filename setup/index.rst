@@ -1,3 +1,5 @@
+.. index:: Setup
+
 Setup Guide
 ===========
 
@@ -14,4 +16,3 @@ Broker Network Components.
   other
   configure_os
   components
-   
