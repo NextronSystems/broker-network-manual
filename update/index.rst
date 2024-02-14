@@ -17,5 +17,5 @@ This section focuses on updates for your products.
 .. toctree::
   :caption: Contents
   
-  major
   minor
+  major
