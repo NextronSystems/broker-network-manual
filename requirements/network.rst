@@ -5,7 +5,7 @@ Network Requirements
 
 The ASGARD components use the ports in the following chapters.
 For a detailed and up to date list of our update and licensing
-servers, please visit https://www.nextron-systems.com/hosts/.
+servers, please visit https://www.nextron-systems.com/resources/hosts/.
 
 ASGARD Agent
 ^^^^^^^^^^^^
