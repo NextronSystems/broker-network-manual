@@ -22,7 +22,7 @@ You can install the three servers in any order, as we will configure them once t
 Gatekeeper Installation
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-To install the Gatekeeper, you need first configure it
+To install the Gatekeeper, you first need to configure it
 in your Management Center. After you have configured/linked
 the Gatekeeper, you will get a command which is needed for
 the Nextron Universal Installer.
@@ -46,7 +46,7 @@ you to reboot the server.
 Lobby Installation
 ~~~~~~~~~~~~~~~~~~
 
-To install the Lobby, you need first add a Lobby in your
+To install the Lobby, you first nned to add a Lobby in your
 Management Center. After you have added the Lobby, you can
 download the configuration file, which is needed for the
 installation.
@@ -70,10 +70,10 @@ you to reboot the server.
 Broker Installation
 ~~~~~~~~~~~~~~~~~~~
 
-To install the Broker, you need first add a Broker in your
-Management Center. After you have added the Broker, your
-Management Center will display a command which is needed
-for the Nextron Universal Installer.
+To install the Broker, you first need to add a Broker in your
+Management Center. After you have configured your Broker, you
+will get a command which is needed for the Nextron Universal Installer.
+
 
 .. figure:: ../images/setup_broker-config.png
    :alt: Configuring the Broker
