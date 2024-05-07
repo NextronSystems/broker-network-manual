@@ -10,9 +10,6 @@ Broker Network Components.
 .. toctree::
   :caption: Contents
   
-  esxi
-  installer
-  network
-  other
-  configure_os
+  setup
+  nui
   components
