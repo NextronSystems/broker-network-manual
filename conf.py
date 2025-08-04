@@ -2,7 +2,7 @@ import os
 
 project = 'ASGARD Broker Network Manual'
 version="2.0"
-copyright = '2024, Nextron Systems'
+copyright = '2025, Nextron Systems'
 author = 'Nextron Systems'
 extensions = [
     'sphinx.ext.autosectionlabel',
