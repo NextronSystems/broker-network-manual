@@ -79,3 +79,15 @@ which in return gets distributed by the Gatekeeper to all the Brokers.
 
 From this point on, the Agent can communicate with the ASGARD through the Broker again.
 Revoking and Allowing certificates will reflect to the Brokers rather quickly.
+
+Resetting Admin Password
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+If you need to reset the password for the default user ``admin``, you can do
+so via the command line. Execute the following command and enter the new password:
+
+.. code-block:: console
+
+   nextron@lobby:~$ sudo asgard-lobby set-password
+   
+The new password will be effective immediately.
