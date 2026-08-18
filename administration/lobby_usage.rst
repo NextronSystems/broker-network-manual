@@ -4,10 +4,10 @@ Using the Lobby
 ---------------
 
 The Lobby is the component in your Broker Network which needs a little more attention.
-The Lobby is distributing or revoking certificates for ASGARD Agents, which are needed
-to communicate over the secure channel of the Broker Network.
-The first thing your Agents, if configured to use your Broker Network, will do,
-is to contact your Lobby. They need a unique certificate to be able to communicate with your Brokers.
+The Lobby is distributing or revoking certificates for Endpoint Agents, which are needed
+to communicate over the secure channel of the Broker Network. The first thing your Agents,
+if configured to use your Broker Network, will do, is to contact your Lobby. They need a
+unique certificate to be able to communicate with your Brokers.
 
 During the initial setup of your Agent, a unique public and private key will be generated.
 The agent sends the public key to the Lobby, which in return (if the Asset is being accepted)
@@ -77,7 +77,7 @@ If you want to allow a revoked asset to communicate with the Brokers again,
 you can do this here. The certificate belonging to the asset will be removed from the CRL,
 which in return gets distributed by the Gatekeeper to all the Brokers.
 
-From this point on, the Agent can communicate with the ASGARD through the Broker again.
+From this point on, the Agent can communicate with the Management Center through the Broker again.
 Revoking and Allowing certificates will reflect to the Brokers rather quickly.
 
 Resetting Admin Password

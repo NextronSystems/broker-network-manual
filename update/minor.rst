@@ -4,10 +4,10 @@ Minor Updates
 =============
 
 This chapter guides you through the update process of
-your ASGARD Broker Network components.
+your Broker Network components.
 
-ASGARD Broker
-~~~~~~~~~~~~~
+Broker
+~~~~~~
 
 You can see new available versions for your Broker(s)
 if you open the details page for each Broker. To do
@@ -35,8 +35,8 @@ mainly that the connection to the broker is disrupted.
 This is normal and should correct itself after the
 service is up and running again.
 
-ASGARD Gatekeeper
-~~~~~~~~~~~~~~~~~
+Gatekeeper
+~~~~~~~~~~
 
 You can see new available versions for your Gatekeeper
 if you open the details page. To do this, navigate to
@@ -63,8 +63,8 @@ mainly that the connection to the broker is disrupted.
 This is normal and should correct itself after the
 service is up and running again.
 
-ASGARD Lobby
-~~~~~~~~~~~~
+Lobby
+~~~~~
 
 To see if new updates for your Lobby are available,
 open the webinterface via your ``Broker Network`` view.

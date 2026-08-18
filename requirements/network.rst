@@ -3,12 +3,12 @@
 Network Requirements
 --------------------
 
-The ASGARD components use the ports in the following chapters.
+The following chapter shows the network ports used by our products.
 For a detailed and up to date list of our update and licensing
 servers, please visit https://www.nextron-systems.com/resources/hosts/.
 
-ASGARD Agent
-^^^^^^^^^^^^
+Endpoint Agent
+^^^^^^^^^^^^^^
 
 .. list-table:: 
    :header-rows: 1
@@ -20,26 +20,26 @@ ASGARD Agent
      - Destination
    * - Agent to Server communication
      - 443/tcp
-     - ASGARD Agent
-     - Broker / ASGARD
+     - Endpoint Agent
+     - Broker / Management Center
    * - Retrieve certificate
      - 443/tcp
-     - ASGARD Agent
+     - Endpoint Agent
      - Lobby
 
 .. warning::
-  Your agents will always try to contact your ASGARD directly, and if this fails,
-  they will try the Lobby or Brokers. If you are deploying agents with a
-  broker network configuration in your internal network, and they **can** contact
-  the ASGARD directly, they will not be able to get a valid certificate from
-  your Lobby. This is not an issue if your Lobby is exposed to the internet and
-  your agents will be able to request a certificate once they are connecting from
-  the open internet.
+  Your agents will always try to connect to your Management Center directly, and
+  if this fails, they will try the Lobby or one of the configured Brokers. If you
+  are deploying agents with a broker network configuration in your internal
+  network, and they **can** contact  the Management Center directly, they will
+  not be able to get a valid certificate from your Lobby. This is not an issue
+  if your Lobby is exposed to the internet and your Endpoint Agents will be able
+  to request a certificate once they are connecting from the open internet.
   
   If your Lobby is not exposed to the internet, the agents **must not** be able to
-  contact your ASGARD directly, but rather your Lobby. To do this, you have to
-  ensure your agents will not be able to communicate directly with your ASGARD,
-  but only directly with the Lobby and a Broker (e.g. your ASGARD sits behind an
+  contact your Management Center directly, but rather your Lobby. To do this, you have to
+  ensure your agents will not be able to connect directly to your Management Center ,
+  but only directly with the Lobby and a Broker (e.g. your Management Center sits behind an
   internal Broker and can not be reached directly).
   
   It is important to remember that your agents need a valid certificate from your
@@ -58,15 +58,15 @@ The following priorities of servers your agents try to connect to are in place:
    * - Server
      - Priority
      - Info
-   * - ASGARD
+   * - Management Center
      - 1
      - Always highest priority
    * - Lobby
      - 2
-     - If agent has no Broker Certificate
+     - If Agent has no Broker Certificate
    * - Broker
      - 3
-     - If agent has Broker Certificate
+     - If Agent has Broker Certificate
 
 Gatekeeper
 ^^^^^^^^^^
@@ -110,8 +110,8 @@ Gatekeeper
 .. [3]
    Certificate Revocation List
 
-ASGARD
-^^^^^^
+Management Center
+^^^^^^^^^^^^^^^^^
 
 .. list-table:: 
    :header-rows: 1
@@ -125,7 +125,7 @@ ASGARD
  
        \- Agent communication
      - 12000/tcp
-     - ASGARD
+     - Management Center
      - Gatekeeper
 
 Management Workstation
@@ -190,9 +190,10 @@ The Broker Network components are configured to retrieve updates from the follow
   The NTP server configuration can be changed.
 
 All proxy systems should be configured to allow access to these URLs without
-TLS/SSL interception. (ASGARD uses client-side SSL certificates for authentication).
-It is possible to configure a proxy server, username and password during the setup
-process of the ASGARD platform. Only BASIC authentication is supported (no NTLM authentication support).
+TLS/SSL interception. The Management Center uses client-side SSL certificates
+for authentication. It is possible to configure a proxy server, username and
+password during the setup process of the Management Center. Only BASIC authentication
+is supported (no NTLM authentication support).
 
 DNS
 ^^^

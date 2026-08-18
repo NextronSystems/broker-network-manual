@@ -11,4 +11,4 @@ and follow the instructions carefully.
     agents
     lobby_usage
     lobby_settings
-    asgard
+    management_center

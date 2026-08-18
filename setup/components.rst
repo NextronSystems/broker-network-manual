@@ -6,7 +6,7 @@ Installating the Broker Network Components
 After the base installation of your servers is completed, you can install
 the specific components.
 
-Make sure you have a valid license for the ASGARD Management Center
+Make sure you have a valid license for the Management Center
 with the **Broker Network** feature enabled.
 
 .. figure:: ../images/broker_nextronInstaller.png
@@ -34,7 +34,7 @@ the Nextron Universal Installer.
    :alt: Integration Command for the Gatekeeper
 
 Once you saved the command, you can proceed with the
-installation. Choose "ASGARD Gatekeeper" and continue to
+installation. Choose "Gatekeeper" and continue to
 follow the instructions of the Nextron Universal Installer.
 
 .. figure:: ../images/setup_gatekeeper-input.png
@@ -58,7 +58,7 @@ installation.
    :alt: Lobby Configuration File
 
 Once you downloaded the configuration file, you can proceed
-with the installation. Choose "ASGARD Lobby" and continue to
+with the installation. Choose "Lobby" and continue to
 follow the instructions of the Nextron Universal Installer.
 
 .. figure:: ../images/setup_lobby-input.png
@@ -82,7 +82,7 @@ will get a command which is needed for the Nextron Universal Installer.
    :alt: Integration Command for the Broker
 
 Once you saved the command, you can proceed with the
-installation. Choose "ASGARD Broker" and continue to
+installation. Choose "Broker" and continue to
 follow the instructions of the Nextron Universal Installer.
 
 .. figure:: ../images/setup_broker-input.png

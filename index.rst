@@ -1,12 +1,13 @@
 .. index:: Home
 
-Welcome to ASGARD's Broker Network documentation!
-=================================================
+Welcome to the Broker Network documentation!
+============================================
 
-Beginning from the Version 2.14.0 of the ASGARD Management Center, you
+Beginning from the Version 2.14.0 of the Management Center, you
 can install a Broker Network in your environment (a special license is
 needed for this feature). This is designed to be your gateway which is
-placed in front of the ASGARD. You can use this for multiple Scenarios:
+placed in front of the Management Center. You can use this for multiple
+Scenarios:
 
 - Multiple Brokers for load balancing
 - Multiple Brokers for load sharing

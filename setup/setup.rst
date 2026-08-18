@@ -13,13 +13,13 @@ Overview of the Components
 
 There are three components which are needed for the Broker Network:
 
-   * **Lobby** - New ASGARD Agents will get a certificate for a secure communication from
+   * **Lobby** - New Endpoint Agents will get a certificate for a secure communication from
      the Lobby. An administrator can accept the agents or configure the auto-accept option.
      Certificates for agents can also be revoked here.
    * **Gatekeeper** - The Gatekeeper is used to communicate directly between all the components.
      Certificates and Revoke Lists get picked up from the Lobby and are being pushed to all Brokers.
-   * **Broker** - Your Broker(s) are the component which your ASGARD Agents communicate with.
-     Once an ASGARD Agent received a valid certificate from the Lobby, communication is possible.
+   * **Broker** - Your Broker(s) are the component which your Endpoint Agents communicate with.
+     Once an Endpoint Agent received a valid certificate from the Lobby, communication is possible.
      You can have multiple Brokers configured.
 
 .. figure:: ../images/broker_network_overview.png
@@ -38,7 +38,7 @@ Create a new ESX VM and mount the ISO
 Create a new VM with your virtualization software. In this case, we will use VMWare ESX managed through a VMWare VCenter.
 
 The new VM must be configured with a Linux base system and Debian GNU/Linux 10 (64 bits) as
-target version. It is recommended to upload the ASGARD ISO to an accessible data store
+target version. It is recommended to upload the Universal Installer ISO to an accessible data store
 and mount the same to your newly created VM. 
 
 .. figure:: ../images/setup_esx1.png
@@ -54,19 +54,20 @@ and mount the same to your newly created VM.
    :alt: New Virtual Machine - ESX
 
 Please make sure to select a suitable v-switch or physical interface that reflects
-the IP address scheme you are planning to use for the new ASGARD.
+the IP address scheme you are planning to use for the new Management Center.
 
 .. index:: Installer
 
 Navigate through the Installer
 ------------------------------
 
-The installation Process is started by clicking on ASGARD Graphical install.
-The installer then loads the additional components from the ISO and lets you select location and language.
+The installation Process is started by clicking on "Graphical install".
+The installer then loads the additional components from the ISO and
+lets you select location and language.
 
 
 .. figure:: ../images/setup_iso_installer.png
-   :alt: ISO Installer - ASGARD
+   :alt: ISO Installer
 
 .. figure:: ../images/setup_language.png
    :alt: Select a language
@@ -85,7 +86,7 @@ The installer then loads the additional components from the ISO and lets you sel
 
 .. note::
    If DHCP is available, network parameters will be configured automatically.
-   Without DHCP, ASGARD drops into the manual network configuration dialogue.
+   Without DHCP, the installer drops into the manual network configuration dialogue.
    The IP address can be changed later, see :ref:`setup/setup:changing the ip-address (optional)`
 
 .. index:: Network Configuration
@@ -106,7 +107,7 @@ Network Configuration
    :alt: Configure the network
 
 .. warning::
-   ASGARD needs to be able to resolve internal and external IP addresses.
+   The server needs to be able to resolve internal and external IP addresses.
 
 .. figure:: ../images/setup_network5.png
    :alt: Configure the network
@@ -117,8 +118,9 @@ Network Configuration
 .. warning::
    **Important:** Make sure that the combination of hostname and domain
    creates an FQDN that can be resolved from the endpoints on which you
-   intend to install the ASGARD agents. If you've configured a FQDN (hostname + domain)
-   that cannot be resolved on the clients, no agent will be able to find and reconnect to the ASGARD server. 
+   intend to install the Endpoint Agents. If you've configured a FQDN (hostname + domain)
+   that cannot be resolved on the clients, no agent will be able to find and reconnect to
+   the server.
 
 .. figure:: ../images/setup_network7.png
    :alt: Configure the network
@@ -171,7 +173,7 @@ You components IP Addresses can be changed in **/etc/network/interfaces**. The I
 
 .. code-block:: console
 
-   nextron@asgard:~$ sudo vi /etc/network/interfaces
+   nextron@mgmt-center:~$ sudo vi /etc/network/interfaces
 
 .. code-block::
 
@@ -196,7 +198,7 @@ To verify if your components are using the correct DNS Server, you can inspect t
 
 .. code-block:: console
 
-   nextron@asgard-ac:~$ cat /etc/resolv.conf 
+   nextron@mgmt-center:~$ cat /etc/resolv.conf 
    search example.org
    nameserver 172.16.200.2
 
@@ -204,4 +206,4 @@ If you see errors in this configuration, you can change it with the following co
 
 .. code-block:: console
 
-   nextron@asgard-ac:~$ sudoedit /etc/resolv.conf
+   nextron@mgmt-center:~$ sudoedit /etc/resolv.conf

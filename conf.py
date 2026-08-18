@@ -1,6 +1,6 @@
 import os
 
-project = 'ASGARD Broker Network Manual'
+project = 'Broker Network Manual'
 version="2.0"
 copyright = '2026, Nextron Systems'
 author = 'Nextron Systems'

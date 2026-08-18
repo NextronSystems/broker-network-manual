@@ -41,7 +41,7 @@ In the Lobby Settings, you can see if Current Config is Available, which in
 return allows Agent Registration. This does not need to be changed, only during
 the initial setup you need to import the configuration.
 
-Additionally, you can enable the ``Automatic Approval of ASGARD Agents``
+Additionally, you can enable the ``Automatic Approval of Endpoint Agents``
 
 .. figure:: ../images/lobby_settings_lobby.png
    :alt: The Lobby Settings
@@ -67,7 +67,7 @@ Lobby Settings - Syslog
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 You can configure Syslog Forwarding here, similar to the settings in your
-ASGARD, but only for your Lobby Logs.
+Management Center, but instead for your Lobby Logs.
 
 .. figure:: ../images/lobby_settings_syslog.png
    :alt: The Syslog Settings
@@ -103,14 +103,14 @@ A yellow indicator means that one or more services are not running properly.
 .. figure:: ../images/lobby_status_navigation_warn.png
    :alt: Lobby Status - Warning
 
-Inspect the Diagnostics panel by clicking on the ``ASGARD Lobby Status``
+Inspect the Diagnostics panel by clicking on the ``Lobby Status``
 button to get a better understanding of the issue.
 
 .. figure:: ../images/lobby_diagnostics_panel_warn.png
    :alt: Lobby Diagnostics - Warning
 
-Here we can see that the Gatekeeper didn't contact the Lobby. You can see more
-details by clicking the magnifying glass to the right.
+Here we can see that the Gatekeeper didn't contact the Lobby.
+You can see more details by clicking the magnifying glass to the right.
 
 .. figure:: ../images/lobby_diagnostics_details_panel_warn.png
    :alt: Lobby Diagnostics - Warning
@@ -118,17 +118,20 @@ details by clicking the magnifying glass to the right.
 Lobby Status - Error
 ^^^^^^^^^^^^^^^^^^^^
 
-A red indicator means that one or more services are problematic and need to be fixed in a timely manner.
+A red indicator means that one or more services are problematic and need
+to be fixed in a timely manner.
 
 .. figure:: ../images/lobby_status_navigation_error.png
    :alt: Lobby Status - Error
 
-Inspect the Diagnostics panel by clicking on the ``ASGARD Lobby Status`` button to get a better understanding of the issue.
+Inspect the Diagnostics panel by clicking on the ``Lobby Status`` button
+to get a better understanding of the issue.
 
 .. figure:: ../images/lobby_diagnostics_panel_error.png
    :alt: Lobby Diagnostics - Error
 
-Here we can see that the Lobby can't reach the update server. You can see more details by clicking the magnifying glass to the right.
+Here we can see that the Lobby can't reach the update server. You can see
+more details by clicking the magnifying glass to the right.
 
 .. figure:: ../images/lobby_diagnostics_details_panel_error.png
    :alt: Lobby Diagnostics - Error
