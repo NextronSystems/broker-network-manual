@@ -1,9 +1,9 @@
-.. index:: ASGARD
+.. index:: Management Center
 
-Broker Network in the ASGARD Management Center
-----------------------------------------------
+Broker Network in the Management Center
+---------------------------------------
 
-The Broker Network view in your ASGARD gives you:
+The Broker Network view in your Management Center shows you:
 
 - The number of Asset connections
 - Gatekeeper Statistics

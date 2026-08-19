@@ -5,8 +5,8 @@ Hardware Requirements
 
 You can find the hardware requirements for all of the components below.
 
-ASGARD Broker Hardware
-^^^^^^^^^^^^^^^^^^^^^^
+Broker Hardware
+^^^^^^^^^^^^^^^
 
 The required hardware for your Broker depends on the setup you are choosing.
 
@@ -65,13 +65,13 @@ Example: For an environment of up to 10,000 agents, you can use the following ha
   Try not to go lower than 80 GB of storage and 3 GB of system memory for
   your Broker, as this might influence system stability after a while.
 
-ASGARD Gatekeeper Hardware
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+Gatekeeper Hardware
+^^^^^^^^^^^^^^^^^^^
 
-The ASGARD Gatekeeper uses roughly the same amount of resources as
-your `ASGARD Management Center <https://asgard-manual.nextron-systems.com/en/latest/requirements/hardware.html>`_,
+The Gatekeeper uses roughly the same amount of resources as
+your `Management Center <https://management-center-manual.nextron-systems.com/en/latest/requirements/hardware.html>`_,
 apart from the disk space. Please orientate yourself on the configuration
-of your ASGARD. The recommendations are the following:
+of your Management Center. The recommendations are the following:
 
 .. list-table::
    :header-rows: 1
@@ -98,8 +98,8 @@ of your ASGARD. The recommendations are the following:
        
        \- CPU Cores: 4
 
-ASGARD Lobby Hardware
-^^^^^^^^^^^^^^^^^^^^^
+Lobby Hardware
+^^^^^^^^^^^^^^
 
 .. list-table::
    :header-rows: 1

@@ -1,6 +1,6 @@
 import os
 
-project = 'ASGARD Broker Network Manual'
+project = 'Broker Network Manual'
 version="2.0"
 copyright = '2026, Nextron Systems'
 author = 'Nextron Systems'
@@ -16,7 +16,7 @@ html_theme_options = {
     'prev_next_buttons_location': 'both',
     'style_external_links': True
 }
-html_logo = "images/html/asgard-logo.png"
+html_logo = "images/html/logo.png"
 html_favicon = "images/html/favicon.ico"
 html_static_path = ['_static']
 html_css_files = ['css/custom.css',]

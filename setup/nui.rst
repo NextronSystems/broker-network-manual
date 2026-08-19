@@ -4,38 +4,33 @@ Nextron Universal Installer
 ---------------------------
 
 The Nextron Universal Installer is a web based installer
-which will guide you through the installation of our
-ASGARD products. The Nextron Universal Installer will install
-**one** of the following products on your server (this manual
-focuses on the ``Broker``, ``Gatekeeper`` and ``Lobby`` components):
+which will guide you through the installation of our products.
+The Nextron Universal Installer will install **one** of the
+following products on your server (this manual focuses on the
+``Broker``, ``Gatekeeper``, and ``Lobby``):
 
-.. hint::
-   You need a special ASGARD Management Center license to install
-   all three components. Please make sure you have your license
-   ready before you start the installation.
-
-- ASGARD Management Center; alternatively if your license permits:
+- Management Center; alternatively if your license permits:
   
-  * ASGARD Broker
-  * ASGARD Gatekeeper
-  * ASGARD Lobby
+  * Broker
+  * Gatekeeper
+  * Lobby
 
-- Master ASGARD
+- Master Management Center
 
-- ASGARD Analysis Cockpit; alternatively:
+- Analysis Cockpit; alternatively:
   
-  * Elasticsearch Cluster Node for ASGARD Analysis Cockpit
+  * Elasticsearch Cluster Node for Analysis Cockpit
 
-- ASGARD Security Center, in the following variants:
+- Security Center, in the following variants:
 
-  * ASGARD Security Center (Backend Only)
-  * ASGARD Security Center (Frontend Only)
-  * ASGARD Security Center (All-in-one, unrecommended)
+  * Security Center (Backend Only)
+  * Security Center (Frontend Only)
+  * Security Center (All-in-one, unrecommended)
 
 .. note::
    You can only install one product on one server, since the
    products are not designed to coexist on the same server.
-   The exception being the ASGARD Security Center (All-in-one).
+   The exception being the Security Center (All-in-one).
 
 The installation takes roughly between 5-15 minutes, depending
 on your internet connection and the server you are installing
@@ -47,10 +42,10 @@ If you encounter problems during your installation, please see
 Requirements
 ~~~~~~~~~~~~
 
-The installation of the ASGARD Broker Network components requires
+The installation of the Broker Network components requires
 the following:
 
-- A valid license file for the ASGARD Management Center (with the **Broker Network** feature enabled)
+- A valid license file for the Management Center (with the **Broker Network** feature enabled)
 - A configured FQDN (with some exceptions, see :ref:`setup/nui:valid fqdn`)
 - Internet access during installation (see :ref:`setup/nui:connectivity check`)
 
@@ -62,7 +57,7 @@ you will be greeted at the console login prompt with
 the following message:
 
 .. figure:: ../images/setup_nextronInstaller.png
-   :alt: Login prompt ASGARD Server
+   :alt: Login prompt Server
 
 Follow the instructions and navigate to the webpage
 displayed on your console. You will most likely get
@@ -101,12 +96,12 @@ Valid FQDN
 The Nextron Universal Installer will prompt you to verify the
 FQDN which you configured during the installation of the base
 system (see :ref:`setup/setup:network configuration`). This
-is needed in order for your ASGARD Agents to communicate via
-a HTTPs connection with the ASGARD Management Center. The Agents
-will use the FQDN to connect to the ASGARD Management Center and
+is needed in order for your Endpoint Agents to communicate via
+a HTTPs connection with the Management Center. The Agents
+will use the FQDN to connect to the Management Center and
 also verify the Common Name of the certificate to verify its
 authenticity. If there is a mismatch the Agents will not be able
-to connect to the ASGARD Management Center.
+to connect to the Management Center.
 
 If the displayed FQDN is not correct, you can change it by
 clicking on the ``View FQDN Change Instructions`` button.
@@ -129,8 +124,8 @@ button in the left menu of the Nextron Universal Installer.
 
 If you configured a proxy during the ISO installation, those
 settings will be carried over into the Universal Installer.
-The settings will also be carried over into your ASGARD
-Management Center. The same goes for NTP.
+The settings will also be carried over into your Management
+Center. The same goes for NTP.
 
 Diagnostic Pack
 ~~~~~~~~~~~~~~~
