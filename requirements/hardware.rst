@@ -69,7 +69,7 @@ Gatekeeper Hardware
 ^^^^^^^^^^^^^^^^^^^
 
 The Gatekeeper uses roughly the same amount of resources as
-your `Management Center <https://asgard-manual.nextron-systems.com/en/latest/requirements/hardware.html>`_,
+your `Management Center <https://management-center-manual.nextron-systems.com/en/latest/requirements/hardware.html>`_,
 apart from the disk space. Please orientate yourself on the configuration
 of your Management Center. The recommendations are the following:
 
