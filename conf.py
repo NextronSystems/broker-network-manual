@@ -16,7 +16,7 @@ html_theme_options = {
     'prev_next_buttons_location': 'both',
     'style_external_links': True
 }
-html_logo = "images/html/logo.png"
+html_logo = "images/html/logo.svg"
 html_favicon = "images/html/favicon.ico"
 html_static_path = ['_static']
 html_css_files = ['css/custom.css',]
